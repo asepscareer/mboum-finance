@@ -1,0 +1,21 @@
+name,value
+Up,chg_up
+Down,chg_down
+Under 10%,chg_u_1
+Under 25%,chg_u_3
+Under 50%,chg_u_5
+Up 0% to 5%,chg_up_0_5
+Up 5% to 10%,chg_up_5_10
+Up 10% to 25%,chg_up_10_25
+Up 25% to 50%,chg_up_25_50
+Up 50% to 100%,chg_up_50_100
+Up +100%,chg_up_100
+Down 0% to 5%,chg_down_0_5
+Down 5% to 10%,chg_down_5_10
+Down 10% to 25%,chg_down_10_25
+Down 25% to 50%,chg_down_25_50
+Down 50% to 100%,chg_down_50_100
+Down -100%,chg_down_100
+Over 10%,chg_o_1
+Over 25%,chg_o_3
+Over 50%,chg_o_5

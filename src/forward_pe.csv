@@ -1,0 +1,15 @@
+name,value
+Profitable (Over 0),fwd_pe_u
+Low (<15),fwd_pe_15
+High (>50),fwd_pe_50
+Under 1,fwd_pe_u_1
+Under 3,fwd_pe_u_3
+Under 5,fwd_pe_u_5
+1 to 3,fwd_pe_u_1_3
+3 to 5,fwd_pe_u_3_5
+5 to 10,fwd_pe_u_5_10
+10 to 50,fwd_pe_u_10_50
+50 to 100,fwd_pe_u_50_100
+Over 1,fwd_pe_o_1
+Over 3,fwd_pe_o_3
+Over 5,fwd_pe_o_5

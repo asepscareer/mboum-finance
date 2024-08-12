@@ -1,0 +1,8 @@
+name,value
+Low (Under 1%),epsy_u
+High (>25%),epsy_u_25
+1% to 10%,epsy_u_1_10
+10% to 20%,epsy_u_1_20
+20% to 30%,epsy_u_20_30
+Under 30%,epsy_u_30
+Above 30%,epsy_o_30

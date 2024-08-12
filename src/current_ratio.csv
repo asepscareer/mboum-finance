@@ -1,0 +1,14 @@
+name,value
+Low (<1),curr_r_up
+High (>3),curr_r_up_5
+0 to 1,curr_r_up_0_1
+1 to 2,curr_r_up_1_2
+2 to 3,curr_r_up_2_3
+3 to 5,curr_r_up_3_5
+5 to 10,curr_r_up_5_10
+Under 3,curr_r_u_3
+Under 5,curr_r_u_5
+Under 10,curr_r_u_10
+Over 3,curr_r_o_3
+Over 5,curr_r_o_5
+Over 10,curr_r_o_10

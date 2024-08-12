@@ -1,0 +1,15 @@
+name,value
+Postive (>0%),roe_up
+Negative (<0%),roe_d
+0% to 5%,roe_up_0_5
+5% to 10%,roe_up_5_10
+10% to 25%,roe_up_10_25
+25% to 50%,roe_up_25_50
+50% to 100%,roe_up_50_100
+Over +100%,roe_up_100
+0% to -5%,roe_down_0_5
+-5% to -10%,roe_down_5_10
+-10% to -25%,roe_down_10_25
+-25% to -50%,roe_down_25_50
+-50% to -100%,roe_down_50_100
+Under -100%,roe_down_100

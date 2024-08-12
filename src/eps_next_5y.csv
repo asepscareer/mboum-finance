@@ -1,0 +1,8 @@
+name,value
+Low (Under 1%),epsn5y_u
+High (>25%),epsn5y_u_25
+1% to 10%,epsn5y_u_1_10
+10% to 20%,epsn5y_u_1_20
+20% to 30%,epsn5y_u_20_30
+Under 30%,epsn5y_u_30
+Above 30%,epsn5y_o_30

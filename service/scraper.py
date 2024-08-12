@@ -1,6 +1,8 @@
+import csv
 import logging
 
 import requests
+from cssselect import GenericTranslator
 from lxml import html
 import json
 
@@ -8,15 +10,18 @@ from lxml.cssselect import CSSSelector
 
 
 class Scraper:
-    
+
     def __init__(self):
         self.url = "https://mboum.com"
         self.session = requests.Session()
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0'
+        }
 
     def stock_news(self, symbol):
         result = []
         try:
-            response = self.session.get("{}/quote/{}".format(self.url, symbol))
+            response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
             response.raise_for_status()
             tree = html.fromstring(response.content)
             rows = tree.cssselect('div.col-8 div.card-body table tr')
@@ -36,7 +41,7 @@ class Scraper:
             components = text.split()
             return components[0].lower() + ''.join(x.title() for x in components[1:])
 
-        response = self.session.get("{}/quote/{}".format(self.url, symbol))
+        response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
         tree = html.fromstring(response.content)
 
         symbol = tree.xpath('//div[@class="text-center p-1"]/a[1]/b/text()')[0]
@@ -59,7 +64,7 @@ class Scraper:
         return json.dumps(data)
 
     def desc(self, symbol):
-        response = self.session.get("{}/quote/{}".format(self.url, symbol))
+        response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
         tree = html.fromstring(response.content)
 
         company_name = tree.cssselect('.card-header')[0].text_content().replace('About ', '')
@@ -68,7 +73,7 @@ class Scraper:
         return json.dumps(data)
 
     def latest_news(self):
-        response = self.session.get("{}/news".format(self.url))
+        response = self.session.get("{}/news".format(self.url), headers=self.headers)
         tree = html.fromstring(response.content)
 
         data = []
@@ -83,7 +88,7 @@ class Scraper:
     def analyst_ratings(self, symbol):
         result = []
         try:
-            response = self.session.get("{}/quote/{}".format(self.url, symbol))
+            response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
             tree = html.fromstring(response.content)
             analyst_ratings_table = tree.cssselect('div.card:contains("Analyst Ratings") table')[0]
             rows = analyst_ratings_table.cssselect('tr')
@@ -102,7 +107,7 @@ class Scraper:
     def insider_trades(self, symbol):
         result = []
         try:
-            response = self.session.get("{}/quote/{}".format(self.url, symbol))
+            response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
             tree = html.fromstring(response.content)
 
             row_selector = CSSSelector('table.table-sm tbody tr')
@@ -145,3 +150,133 @@ class Scraper:
             logging.error("An unexpected error occurred: {}".format(e))
         finally:
             return json.dumps(result)
+
+    def source_data(self):
+        result = []
+        try:
+            response = self.session.get("{}/screener".format(self.url), headers=self.headers)
+            tree = html.fromstring(response.content)
+
+            translator = GenericTranslator()
+            xpath_expression = translator.css_to_xpath('select option')
+            options = tree.xpath(xpath_expression)
+
+            for option in options:
+                result.append({
+                    'name': option.text_content(),
+                    'value': option.get('value')
+                })
+            with open('./src/output.csv', 'w', newline='', encoding='utf-8') as csvfile:
+                fieldnames = ['name', 'value']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                writer.writeheader()
+                for row in result:
+                    writer.writerow(row)
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+        finally:
+            return json.dumps(result)
+
+    def all_insider_trades(self):
+        result = []
+        try:
+            response = self.session.get("{}".format(self.url), headers=self.headers)
+            tree = html.fromstring(response.content)
+
+            translator = GenericTranslator()
+            rows_xpath = translator.css_to_xpath('div.col-8.pb-4 table.table-sm tbody tr')
+            rows = tree.xpath(rows_xpath)
+
+            for row in rows:
+                cols_xpath = translator.css_to_xpath('td')
+                cols = row.xpath(cols_xpath)
+
+                ticker = cols[0].xpath('.//a/text()')[0] if cols[0].xpath('.//a/text()') else ""
+                insider = cols[1].xpath('.//span[@class="home-insider-desktop"]/text()')[0] if cols[1].xpath(
+                    './/span[@class="home-insider-desktop"]/text()') else ""
+                trade_type = cols[2].text_content()
+                cost = cols[3].text_content()
+                shares = cols[4].text_content()
+                value = cols[5].text_content()
+                shares_owned = cols[6].text_content()
+                sec_form_4_date = cols[7].xpath('.//a/text()')[0] if cols[7].xpath('.//a/text()') else ""
+                sec_form_4_link = cols[7].xpath('.//a/@href')[0] if cols[7].xpath('.//a/@href') else ""
+
+                result.append({
+                    'ticker': ticker.strip(),
+                    'insider': insider.strip(),
+                    'type': trade_type.strip(),
+                    'cost($)': cost.strip(),
+                    'shares': shares.strip(),
+                    'value($)': value.strip(),
+                    'shareOwn': shares_owned.strip(),
+                    'SECForm4Date': sec_form_4_date.strip(),
+                    'SECForm4Link': sec_form_4_link.strip(),
+                })
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+        finally:
+            return json.dumps(result)
+
+    def multiple_screener(self):
+        result = []
+
+        url = "{}/screener/1?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(
+            self.url)
+        try:
+            response = self.session.get(url, headers=self.headers)
+            tree = html.fromstring(response.content)
+            result += self._screener(url)
+
+            page_info_span = tree.cssselect('span:contains("Page")')
+            if page_info_span:
+                page_info_text = page_info_span[0].text_content().strip()
+                total_pages = page_info_text.split()[-1]
+                total_pages = int(total_pages)
+            else:
+                return 0
+
+            for page in range(2, total_pages + 1):
+                url_access = "{}/screener/{}?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(self.url, page)
+                result += self._screener(url_access)
+        except Exception as e:
+            print(f"Error occurred during scraping: {e}")
+        finally:
+            return json.dumps(result)
+
+    def _screener(self, url):
+        result = []
+        response = self.session.get(url, headers=self.headers)
+        tree = html.fromstring(response.content)
+        translator = GenericTranslator()
+
+        rows_xpath = translator.css_to_xpath(
+            'table.table.table-striped.table-hover.table-sm.table-bordered.analytic tbody tr')
+        rows = tree.xpath(rows_xpath)
+        for row in rows:
+            cols_xpath = translator.css_to_xpath('td')
+            cols = row.xpath(cols_xpath)
+
+            ticker = cols[0].xpath('.//a/text()')[0] if cols[0].xpath('.//a/text()') else ""
+            company = cols[1].text_content().strip()
+            industry = cols[2].text_content().strip()
+            sector = cols[3].text_content().strip()
+            country = cols[4].text_content().strip()
+            market_cap = cols[5].text_content().strip()
+            price = cols[6].text_content().strip()
+            change = cols[7].xpath('.//span/text()')[0] if cols[7].xpath('.//span/text()') else ""
+            volume = cols[8].text_content().strip()
+
+            result.append({
+                'ticker': ticker.strip(),
+                'company': company,
+                'industry': industry,
+                'sector': sector,
+                'country': country,
+                'marketCap': market_cap,
+                'price': price,
+                'change': change.strip(),
+                'volume': volume
+            })
+        return result

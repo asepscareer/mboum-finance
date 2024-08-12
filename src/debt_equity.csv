@@ -1,0 +1,17 @@
+name,value
+Low (<0.1),debteq_l
+High (>0.5),debteq_h
+Under 1,debteq_u_1
+Under 3,debteq_u_3
+Under 5,debteq_u_5
+Under 10,debteq_u_10
+Under 20,debteq_u_20
+Under 25,debteq_u_25
+Under 30,debteq_u_30
+Over 1,debteq_o_1
+Over 3,debteq_o_3
+Over 5,debteq_o_5
+Over 10,debteq_o_10
+Over 20,debteq_o_20
+Over 25,debteq_o_25
+Over 30,debteq_o_30

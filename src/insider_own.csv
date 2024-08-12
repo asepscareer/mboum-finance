@@ -1,0 +1,9 @@
+name,value
+Low (Under 10%),insido_u_10
+High (>30%),insido_u_25
+Over 20%,insido_u_2
+Over 30%,insido_u_3
+Over 40%,insido_u_4
+Over 50%,insido_u_5
+Over 60%,insido_u_6
+Over 70%,insido_u_7

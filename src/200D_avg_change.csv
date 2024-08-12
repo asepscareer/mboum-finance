@@ -1,0 +1,16 @@
+name,value
+Postive (>0%),200davgchg_up
+Negative (<0%),200davgchg_d
+0% to 5%,200davgchg_up_0_5
+5% to 10%,200davgchg_up_5_10
+10% to 50%,200davgchg_up_10_50
+50% to 100%,200davgchg_up_50_100
+Under +25%,200davgchg_u_25
+Under +50%,200davgchg_u_50
+Under +100%,200davgchg_u_100
+Over +50%,200davgchg_o_50
+Over +100%,200davgchg_o_100
+0% to -5%,200davgchg_d_0_5
+-5% to -10%,200davgchg_d_5_10
+-10% to -50%,200davgchg_d_10_50
+-50% to -100%,200davgchg_d_50_100

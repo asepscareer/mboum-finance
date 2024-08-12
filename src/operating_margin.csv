@@ -1,0 +1,19 @@
+name,value
+Postive (>0%),oper_m_up
+Negative (<0%),oper_m_d
+Under 25%,oper_m_up_25
+Under 50%,oper_m_up_50
+Under 100%,oper_m_up_100
+0% to 5%,oper_m_up_0_5
+5% to 10%,oper_m_up_5_10
+10% to 25%,oper_m_up_10_25
+25% to 50%,oper_m_up_25_50
+50% to 100%,oper_m_up_50_100
+0% to -5%,oper_m_down_0_5
+-5% to -10%,oper_m_down_5_10
+-10% to -25%,oper_m_down_10_25
+-25% to -50%,oper_m_down_25_50
+-50% to -100%,oper_m_down_50_100
+Over +25%,oper_m_o_25
+Over +50%,oper_m_o_50
+Over +100%,oper_m_o_100

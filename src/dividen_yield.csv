@@ -1,0 +1,13 @@
+name,value
+None (0%),div_n
+Positive (Under 1%),div_u
+High (>10%),div_a_10
+Under 5%,div_u_5
+Under 10%,div_u_10
+Under 15%,div_u_15
+1% to 5%,div_u_1_5
+5% to 10%,div_u_5_10
+Over 1%,div_0_1
+Over 5%,div_0_5
+Over 10%,div_0_10
+Over 15%,div_0_15

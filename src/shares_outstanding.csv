@@ -1,0 +1,10 @@
+name,value
+Under 1M,outstd_50
+Under 50M,outstd_u_50
+Under 100M,outstd_u_100
+1M to 5M,outstd_1_5
+5M to 10M,outstd_5_10
+10M to 50M,outstd_10_50
+50M to 100M,outstd_50_100
+Over 50M,outstd_o_50
+Over 100M,outstd_o_100

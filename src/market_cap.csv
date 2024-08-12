@@ -1,0 +1,6 @@
+name,value
+Mega (200bln & more),cap_mega
+Large (10bln to 200bln),cap_large
+Mid (2bln to 10bln),cap_mid
+Small (300mln to 2bln),cap_small
+Nano (under 50mln),cap_nano

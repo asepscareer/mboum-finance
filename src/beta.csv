@@ -1,0 +1,11 @@
+name,value
+Under 0,beta_o
+Under 0.5,beta_up
+Under 5,beta_u_5
+0.5 to 1,beta_up_5_1
+1 to 2,beta_up_1_2
+2 to 3,beta_up_2_3
+3 to 5,beta_up_3_5
+Over 1,beta_o_1
+Over 3,beta_o_3
+Over 5,beta_o_5

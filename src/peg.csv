@@ -1,0 +1,13 @@
+name,value
+Low (<1),peg_up
+Under 2,peg_u_2
+Under 5,peg_u_5
+Under 10,peg_u_10
+Over 5,peg_o_5
+Over 10,peg_o_10
+Over 15,peg_o_15
+0 to 1,peg_up_0_1
+1 to 2,peg_up_1_2
+2 to 3,peg_up_2_3
+3 to 5,peg_up_3_5
+High (>5),peg_up_5

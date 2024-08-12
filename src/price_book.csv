@@ -1,0 +1,16 @@
+name,value
+Low (Under 1),pb_u
+High (>5),pb_5
+Under 5,pb_u_5
+Under 10,pb_u_10
+Under 15,pb_u_15
+Under 100,pb_u_100
+1 to 3,pb_b_1_3
+3 to 5,pb_b_3_5
+5 to 10,pb_b_5_10
+10 to 50,pb_b_10_50
+50 to 100,pb_b_50_100
+Over 100,pb_o_100
+Over 5,pb_o_5
+Over 10,pb_o_10
+Over 15,pb_o_15

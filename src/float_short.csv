@@ -1,0 +1,8 @@
+name,value
+Low (Under 5%),fltsht_u
+High (>20%),fltsht_u_25
+5% to 10%,fltsht_u_5_10
+10% to 20%,fltsht_u_1_20
+20% to 30%,fltsht_u_20_30
+Under 30%,fltsht_u_30
+Above 30%,fltsht_o_30

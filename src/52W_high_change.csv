@@ -1,0 +1,16 @@
+name,value
+Postive (>0%),52wkhchg_up
+Negative (<0%),52wkhchg_d
+0% to 5%,52wkhchg_up_0_5
+0% to 10%,52wkhchg_up_0_10
+10% to 50%,52wkhchg_up_10_50
+50% to 100%,52wkhchg_up_50_100
+Under +25%,52wkhchg_u_25
+Under +50%,52wkhchg_u_50
+Under +100%,52wkhchg_u_100
+Over +50%,52wkhchg_o_50
+Over +100%,52wkhchg_o_100
+0% to -5%,52wkhchg_down_0_5
+0% to -10%,52wkhchg_d_0_10
+-10% to -50%,52wkhchg_d_10_50
+-50% to -100%,52wkhchg_d_50_100

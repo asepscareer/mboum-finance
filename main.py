@@ -50,5 +50,23 @@ def latest_news():
     return json.loads(result)
 
 
+@app.get("/all-insider-trades")
+def insider_trades_all():
+    result = service.all_insider_trades()
+    return json.loads(result)
+
+
+@app.get("/source-data")
+def countries():
+    result = service.source_data()
+    return json.loads(result)
+
+
+@app.get("/multiple-screener")
+def multiple_screener():
+    result = service.multiple_screener()
+    return json.loads(result)
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,0 +1,15 @@
+name,value
+Postive (>0%),roa_up
+Negative (<0%),roa_d
+0% to 5%,roa_up_0_5
+5% to 10%,roa_up_5_10
+10% to 25%,roa_up_10_25
+25% to 50%,roa_up_25_50
+50% to 100%,roa_up_50_100
+Over +100%,roa_up_100
+0% to -5%,roa_down_0_5
+-5% to -10%,roa_down_5_10
+-10% to -25%,roa_down_10_25
+-25% to -50%,roa_down_25_50
+-50% to -100%,roa_down_50_100
+Under -100%,roa_down_100

@@ -1,0 +1,15 @@
+name,value
+Profitable (Over 0),p_e_u
+Low (<15),p_e_15
+High (>50),p_e_50
+Under 1,p_e_u_1
+Under 3,p_e_u_3
+Under 5,p_e_u_5
+1 to 3,p_e_u_1_3
+3 to 5,p_e_u_3_5
+5 to 10,p_e_u_5_10
+10 to 50,p_e_u_10_50
+50 to 100,p_e_u_50_100
+Over 1,p_e_o_1
+Over 3,p_e_o_3
+Over 5,p_e_o_5

@@ -1,0 +1,18 @@
+name,value
+Under 50K,vol_u_50
+Under 100K,vol_u_50
+Under 500K,vol_u_50
+Under 1M,vol_u_100
+50K to 100K,vol_b_50_100
+50K to 500K,vol_b_50_500
+500K to 1M,vol_b_50_1000
+1M to 2M,vol_b_1000_2000
+1M to 5M,vol_b_1000_5000
+5M to 10M,vol_b_5000_10000
+10M to 20M,vol_b_10000_20000
+Over 50K,vol_o_50
+Over 100K,vol_o_100
+Over 500K,vol_o_500
+Over 1M,vol_o_1000
+Over 5M,vol_o_5000
+Over 20M,vol_o_20000

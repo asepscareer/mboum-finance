@@ -1,0 +1,20 @@
+name,value
+Postive (>0%),gross_m_up
+Negative (<0%),gross_m_d
+0% to 5%,gross_m_up_0_5
+5% to 10%,gross_m_up_5_10
+10% to 25%,gross_m_up_10_25
+25% to 50%,gross_m_up_25_50
+50% to 100%,gross_m_up_50_100
+Under +25%,gross_m_up_25
+Under +50%,gross_m_up_50
+Under +100%,gross_m_u_100
+Over +25%,gross_m_o_25
+Over +50%,gross_m_o_50
+Over +100%,gross_m_o_100
+0% to -5%,gross_m_down_0_5
+-5% to -10%,gross_m_down_5_10
+-10% to -25%,gross_m_down_10_25
+-25% to -50%,gross_m_down_25_50
+-50% to -100%,gross_m_down_50_100
+Under -100%,gross_m_down_100

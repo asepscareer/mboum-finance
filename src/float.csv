@@ -1,0 +1,12 @@
+name,value
+Under 1M,flt_50
+Under 50M,flt_u_50
+Under 100M,flt_u_100
+Under 500M,flt_u_500
+Under 1Bn,flt_u_1000
+1M to 5M,flt_1_5
+5M to 10M,flt_5_10
+10M to 50M,flt_10_50
+50M to 100M,flt_50_100
+Over 50M,flt_o_50
+Over 100M,flt_o_100
