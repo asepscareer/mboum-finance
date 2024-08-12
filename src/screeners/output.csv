@@ -1,0 +1,765 @@
+name,value
+Any,
+United States,united-states
+China,china
+Ireland,ireland
+Luxembourg,luxembourg
+Germany,germany
+Canada,canada
+Switzerland,switzerland
+United Kingdom,united-kingdom
+Belgium,belgium
+Denmark,denmark
+Bermuda,bermuda
+Netherlands,netherlands
+South Africa,south-africa
+Mexico,mexico
+Taiwan,taiwan
+Uruguay,uruguay
+Spain,spain
+Singapore,singapore
+Sweden,sweden
+Brazil,brazil
+Israel,israel
+Argentina,argentina
+Monaco,monaco
+Australia,australia
+Turkey,turkey
+Colombia,colombia
+Chile,chile
+New Zealand,new-zealand
+Japan,japan
+Norway,norway
+Hong Kong,hong-kong
+France,france
+Austria,austria
+Italy,italy
+Thailand,thailand
+Malaysia,malaysia
+India,india
+Greece,greece
+South Korea,south-korea
+Peru,peru
+Panama,panama
+Cayman Islands,cayman-islands
+Indonesia,indonesia
+Finland,finland
+Bahamas,bahamas
+Russia,russia
+Philippines,philippines
+Macau,macau
+Portugal,portugal
+United Arab Emirates,united-arab-emirates
+Romania,romania
+Guernsey,guernsey
+Jersey,jersey
+Netherlands Antilles,netherlands-antilles
+Belize,belize
+Poland,poland
+Cambodia,cambodia
+British Virgin Islands,british-virgin-islands
+Papua New Guinea,papua-new-guinea
+Gibraltar,gibraltar
+Tanzania,tanzania
+Cyprus,cyprus
+Czech Republic,czech-republic
+Lebanon,lebanon
+Myanmar,myanmar
+Malta,malta
+Ghana,ghana
+Mauritius,mauritius
+Isle of Man,isle-of-man
+Ukraine,ukraine
+Dominican Republic,dominican-republic
+Egypt,egypt
+Anguilla,anguilla
+Macedonia,macedonia
+Hungary,hungary
+Vietnam,vietnam
+Channel Islands,channel-islands
+Kazakhstan,kazakhstan
+Any,
+Profitable (Over 0),p_e_u
+Low (<15),p_e_15
+High (>50),p_e_50
+Under 1,p_e_u_1
+Under 3,p_e_u_3
+Under 5,p_e_u_5
+1 to 3,p_e_u_1_3
+3 to 5,p_e_u_3_5
+5 to 10,p_e_u_5_10
+10 to 50,p_e_u_10_50
+50 to 100,p_e_u_50_100
+Over 1,p_e_o_1
+Over 3,p_e_o_3
+Over 5,p_e_o_5
+Any,
+Postive (>0%),roa_up
+Negative (<0%),roa_d
+0% to 5%,roa_up_0_5
+5% to 10%,roa_up_5_10
+10% to 25%,roa_up_10_25
+25% to 50%,roa_up_25_50
+50% to 100%,roa_up_50_100
+Over +100%,roa_up_100
+0% to -5%,roa_down_0_5
+-5% to -10%,roa_down_5_10
+-10% to -25%,roa_down_10_25
+-25% to -50%,roa_down_25_50
+-50% to -100%,roa_down_50_100
+Under -100%,roa_down_100
+Any,
+Low (Under 1%),epsy_u
+High (>25%),epsy_u_25
+1% to 10%,epsy_u_1_10
+10% to 20%,epsy_u_1_20
+20% to 30%,epsy_u_20_30
+Under 30%,epsy_u_30
+Above 30%,epsy_o_30
+Any,
+Under 1M,flt_50
+Under 50M,flt_u_50
+Under 100M,flt_u_100
+Under 500M,flt_u_500
+Under 1Bn,flt_u_1000
+1M to 5M,flt_1_5
+5M to 10M,flt_5_10
+10M to 50M,flt_10_50
+50M to 100M,flt_50_100
+Over 50M,flt_o_50
+Over 100M,flt_o_100
+Any,
+Consumer Electronics,consumer-electronics
+Banks—Diversified,banksdiversified
+Internet Retail,internet-retail
+Telecom Services,telecom-services
+Internet Content & Information,internet-content-information
+Tobacco,tobacco
+Airlines,airlines
+Aluminum,aluminum
+Credit Services,credit-services
+Chemicals,chemicals
+Medical Devices,medical-devices
+Apparel Manufacturing,apparel-manufacturing
+Semiconductor Equipment & Materials,semiconductor-equipment-materials
+Drug Manufacturers—General,drug-manufacturersgeneral
+Insurance—Diversified,insurancediversified
+Insurance—Property & Casualty,insuranceproperty-casualty
+Software—Infrastructure,softwareinfrastructure
+Information Technology Services,information-technology-services
+Steel,steel
+Drugs - Generic,drugs-generic
+Oil & Gas E&P,oil-gas-ep
+Staffing & Employment Services,staffing-employment-services
+REIT—Mortgage,reitmortgage
+Electronic Gaming & Multimedia,electronic-gaming-multimedia
+Software—Application,softwareapplication
+Farm Products,farm-products
+Pharmaceutical Retailers,pharmaceutical-retailers
+Biotechnology,biotechnology
+Semiconductors,semiconductors
+Utilities—Regulated Electric,utilitiesregulated-electric
+Banks—Regional,banksregional
+Gold,gold
+Apparel Retail,apparel-retail
+Diagnostics & Research,diagnostics-research
+Specialty Retail,specialty-retail
+Auto & Truck Dealerships,auto-truck-dealerships
+Utilities—Diversified,utilitiesdiversified
+Beverages—Brewers,beveragesbrewers
+Medical Instruments & Supplies,medical-instruments-supplies
+Steel & Iron,steel-iron
+Asset Management,asset-management
+Insurance—Life,insurancelife
+Household & Personal Products,household-personal-products
+Capital Markets,capital-markets
+Utilities—Regulated Water,utilitiesregulated-water
+Oil & Gas Midstream,oil-gas-midstream
+Marine Shipping,marine-shipping
+Mortgage Finance,mortgage-finance
+REIT—Residential,reitresidential
+Thermal Coal,thermal-coal
+Healthcare Plans,healthcare-plans
+Silver,silver
+Medical Distribution,medical-distribution
+Metal Fabrication,metal-fabrication
+Security & Protection Services,security-protection-services
+Business Equipment & Supplies,business-equipment-supplies
+Specialty Business Services,specialty-business-services
+Utilities—Regulated Gas,utilitiesregulated-gas
+Insurance Brokers,insurance-brokers
+REIT—Retail,reitretail
+Electrical Equipment & Parts,electrical-equipment-parts
+REIT—Specialty,reitspecialty
+Engineering & Construction,engineering-construction
+Electronics & Computer Distribution,electronics-computer-distribution
+Entertainment,entertainment
+Rental & Leasing Services,rental-leasing-services
+Water Utilities,water-utilities
+Consulting Services,consulting-services
+Specialty Chemicals,specialty-chemicals
+Insurance—Specialty,insurancespecialty
+Electronic Components,electronic-components
+Aerospace & Defense,aerospace-defense
+Pollution & Treatment Controls,pollution-treatment-controls
+Building Products & Equipment,building-products-equipment
+Computer Hardware,computer-hardware
+Farm & Heavy Construction Machinery,farm-heavy-construction-machinery
+Publishing,publishing
+Utilities—Independent Power Producers,utilitiesindependent-power-producers
+Restaurants,restaurants
+Railroads,railroads
+Packaging & Containers,packaging-containers
+Auto Parts,auto-parts
+Drug Manufacturers—Specialty & Generic,drug-manufacturersspecialty-generic
+Specialty Industrial Machinery,specialty-industrial-machinery
+Broadcasting,broadcasting
+REIT—Hotel & Motel,reithotel-motel
+Food Distribution,food-distribution
+Medical Care Facilities,medical-care-facilities
+REIT—Diversified,reitdiversified
+Airports & Air Services,airports-air-services
+Health Information Services,health-information-services
+"Furnishings, Fixtures & Appliances",furnishings-fixtures-appliances
+Industrial Equipment Wholesale,industrial-equipment-wholesale
+REIT—Healthcare Facilities,reithealthcare-facilities
+Solar,solar
+REIT—Office,reitoffice
+Textile Manufacturing,textile-manufacturing
+Communication Equipment,communication-equipment
+Oil & Gas Equipment & Services,oil-gas-equipment-services
+Oil & Gas Integrated,oil-gas-integrated
+Waste Management,waste-management
+Apparel Stores,apparel-stores
+Industrial Distribution,industrial-distribution
+Education & Training Services,education-training-services
+Other Industrial Metals & Mining,other-industrial-metals-mining
+Packaged Foods,packaged-foods
+Integrated Freight & Logistics,integrated-freight-logistics
+Industrial Electrical Equipment,industrial-electrical-equipment
+Trucking,trucking
+Lodging,lodging
+Agricultural Inputs,agricultural-inputs
+Insurance—Reinsurance,insurancereinsurance
+Real Estate Services,real-estate-services
+Scientific & Technical Instruments,scientific-technical-instruments
+Footwear & Accessories,footwear-accessories
+Oil & Gas Refining & Marketing,oil-gas-refining-marketing
+Diversified Electronics,diversified-electronics
+Beverages—Wineries & Distilleries,beverageswineries-distilleries
+Auto Manufacturers - Major,auto-manufacturers-major
+Real Estate—Diversified,real-estatediversified
+Other Precious Metals & Mining,other-precious-metals-mining
+Lumber & Wood Production,lumber-wood-production
+REIT—Industrial,reitindustrial
+Real Estate—Development,real-estatedevelopment
+Auto Manufacturers,auto-manufacturers
+Beverages—Non-Alcoholic,beveragesnon-alcoholic
+Property & Casualty Insurance,property-casualty-insurance
+Shell Companies,shell-companies
+Home Improvement Retail,home-improvement-retail
+Medical Laboratories & Research,medical-laboratories-research
+Leisure,leisure
+Conglomerates,conglomerates
+Cigarettes,cigarettes
+Tools & Accessories,tools-accessories
+Multimedia & Graphics Software,multimedia-graphics-software
+Residential Construction,residential-construction
+Basic Materials Wholesale,basic-materials-wholesale
+Broadcasting - TV,broadcasting-tv
+Travel Services,travel-services
+Luxury Goods,luxury-goods
+Copper,copper
+Building Materials,building-materials
+Personal Services,personal-services
+Money Center Banks,money-center-banks
+Advertising Agencies,advertising-agencies
+Regional - Mid-Atlantic Banks,regional-mid-atlantic-banks
+Resorts & Casinos,resorts-casinos
+Internet Software & Services,internet-software-services
+Discount Stores,discount-stores
+Regional - Southeast Banks,regional-southeast-banks
+Department Stores,department-stores
+Diversified Communication Services,diversified-communication-services
+Regional - Northeast Banks,regional-northeast-banks
+Grocery Stores,grocery-stores
+Recreational Vehicles,recreational-vehicles
+General Building Materials,general-building-materials
+Utilities—Renewable,utilitiesrenewable
+Regional - Southwest Banks,regional-southwest-banks
+Financial Conglomerates,financial-conglomerates
+Savings & Loans,savings-loans
+Cleaning Products,cleaning-products
+Food Wholesale,food-wholesale
+Marketing Services,marketing-services
+Regional - Pacific Banks,regional-pacific-banks
+Wireless Communications,wireless-communications
+Independent Oil & Gas,independent-oil-gas
+Aerospace/Defense Products & Services,aerospacedefense-products-services
+Telecom Services - Domestic,telecom-services-domestic
+Financial Data & Stock Exchanges,financial-data-stock-exchanges
+Confectioners,confectioners
+Oil & Gas Drilling & Exploration,oil-gas-drilling-exploration
+Computers Wholesale,computers-wholesale
+Semiconductor - Broad Line,semiconductor-broad-line
+Uranium,uranium
+Entertainment - Diversified,entertainment-diversified
+Semiconductor - Specialized,semiconductor-specialized
+Paper & Paper Products,paper-paper-products
+Electric Utilities,electric-utilities
+Beverages - Soft Drinks,beverages-soft-drinks
+Staffing & Outsourcing Services,staffing-outsourcing-services
+Foreign Utilities,foreign-utilities
+Gambling,gambling
+Music & Video Stores,music-video-stores
+Investment Brokerage - National,investment-brokerage-national
+Shipping,shipping
+"Specialty Retail, Other",specialty-retail-other
+Oil & Gas Drilling,oil-gas-drilling
+Diversified Machinery,diversified-machinery
+Internet Information Providers,internet-information-providers
+"Discount, Variety Stores",discount-variety-stores
+Specialized Health Services,specialized-health-services
+Business Services,business-services
+Regional - Midwest Banks,regional-midwest-banks
+Application Software,application-software
+Infrastructure Operations,infrastructure-operations
+Technical Services,technical-services
+Coking Coal,coking-coal
+Oil & Gas Pipelines,oil-gas-pipelines
+Diversified Utilities,diversified-utilities
+"Air Services, Other",air-services-other
+Diversified Investments,diversified-investments
+Business Software & Services,business-software-services
+Textile - Apparel Footwear & Accessories,textile-apparel-footwear-accessories
+Closed-End Fund - Equity,closed-end-fund-equity
+Processed & Packaged Goods,processed-packaged-goods
+Drug Stores,drug-stores
+Management Services,management-services
+Medical Appliances & Equipment,medical-appliances-equipment
+Networking & Communication Devices,networking-communication-devices
+Industrial Metals & Minerals,industrial-metals-minerals
+CATV Systems,catv-systems
+Trucks & Other Vehicles,trucks-other-vehicles
+REIT - Office,reit-office
+Home Furnishings & Fixtures,home-furnishings-fixtures
+Medical Practitioners,medical-practitioners
+Electronic Equipment,electronic-equipment
+Semiconductor - Integrated Circuits,semiconductor-integrated-circuits
+Internet Service Providers,internet-service-providers
+Drug Manufacturers - Other,drug-manufacturers-other
+Healthcare Information Services,healthcare-information-services
+Diagnostic Substances,diagnostic-substances
+Property Management,property-management
+Diversified Computer Systems,diversified-computer-systems
+Food - Major Diversified,food-major-diversified
+Real Estate Development,real-estate-development
+Long Distance Carriers,long-distance-carriers
+Drug Manufacturers - Major,drug-manufacturers-major
+Home Improvement Stores,home-improvement-stores
+Information & Delivery Services,information-delivery-services
+Sporting Activities,sporting-activities
+Agricultural Chemicals,agricultural-chemicals
+Any,
+Profitable (Over 0),fwd_pe_u
+Low (<15),fwd_pe_15
+High (>50),fwd_pe_50
+Under 1,fwd_pe_u_1
+Under 3,fwd_pe_u_3
+Under 5,fwd_pe_u_5
+1 to 3,fwd_pe_u_1_3
+3 to 5,fwd_pe_u_3_5
+5 to 10,fwd_pe_u_5_10
+10 to 50,fwd_pe_u_10_50
+50 to 100,fwd_pe_u_50_100
+Over 1,fwd_pe_o_1
+Over 3,fwd_pe_o_3
+Over 5,fwd_pe_o_5
+Any,
+Postive (>0%),roe_up
+Negative (<0%),roe_d
+0% to 5%,roe_up_0_5
+5% to 10%,roe_up_5_10
+10% to 25%,roe_up_10_25
+25% to 50%,roe_up_25_50
+50% to 100%,roe_up_50_100
+Over +100%,roe_up_100
+0% to -5%,roe_down_0_5
+-5% to -10%,roe_down_5_10
+-10% to -25%,roe_down_10_25
+-25% to -50%,roe_down_25_50
+-50% to -100%,roe_down_50_100
+Under -100%,roe_down_100
+Any,
+Low (Under 1%),epsny_u
+High (>25%),epsny_u_25
+1% to 10%,epsny_u_1_10
+10% to 20%,epsny_u_1_20
+20% to 30%,epsny_u_20_30
+Under 30%,epsny_u_30
+Above 30%,epsny_o_30
+Any,
+Low (Under 5%),fltsht_u
+High (>20%),fltsht_u_25
+5% to 10%,fltsht_u_5_10
+10% to 20%,fltsht_u_1_20
+20% to 30%,fltsht_u_20_30
+Under 30%,fltsht_u_30
+Above 30%,fltsht_o_30
+Any,
+Technology,technology
+Financial Services,financial-services
+Consumer Cyclical,consumer-cyclical
+Communication Services,communication-services
+Consumer Defensive,consumer-defensive
+Industrials,industrials
+Basic Materials,basic-materials
+Healthcare,healthcare
+Energy,energy
+Real Estate,real-estate
+Utilities,utilities
+Consumer Goods,consumer-goods
+Conglomerates,conglomerates
+Services,services
+Financial,financial
+Industrial Goods,industrial-goods
+Any,
+Low (Under 1),pb_u
+High (>5),pb_5
+Under 5,pb_u_5
+Under 10,pb_u_10
+Under 15,pb_u_15
+Under 100,pb_u_100
+1 to 3,pb_b_1_3
+3 to 5,pb_b_3_5
+5 to 10,pb_b_5_10
+10 to 50,pb_b_10_50
+50 to 100,pb_b_50_100
+Over 100,pb_o_100
+Over 5,pb_o_5
+Over 10,pb_o_10
+Over 15,pb_o_15
+Any,
+Low (<1),curr_r_up
+High (>3),curr_r_up_5
+0 to 1,curr_r_up_0_1
+1 to 2,curr_r_up_1_2
+2 to 3,curr_r_up_2_3
+3 to 5,curr_r_up_3_5
+5 to 10,curr_r_up_5_10
+Under 3,curr_r_u_3
+Under 5,curr_r_u_5
+Under 10,curr_r_u_10
+Over 3,curr_r_o_3
+Over 5,curr_r_o_5
+Over 10,curr_r_o_10
+Any,
+Low (Under 1%),epsp5y_u
+High (>25%),epsp5y_u_25
+1% to 10%,epsp5y_u_1_10
+10% to 20%,epsp5y_u_1_20
+20% to 30%,epsp5y_u_20_30
+Under 30%,epsp5y_u_30
+Above 30%,epsp5y_o_30
+Any,
+Under 1M,outstd_50
+Under 50M,outstd_u_50
+Under 100M,outstd_u_100
+1M to 5M,outstd_1_5
+5M to 10M,outstd_5_10
+10M to 50M,outstd_10_50
+50M to 100M,outstd_50_100
+Over 50M,outstd_o_50
+Over 100M,outstd_o_100
+Any,
+Mega (200bln & more),cap_mega
+Large (10bln to 200bln),cap_large
+Mid (2bln to 10bln),cap_mid
+Small (300mln to 2bln),cap_small
+Nano (under 50mln),cap_nano
+Any,
+Low (<1),peg_up
+Under 2,peg_u_2
+Under 5,peg_u_5
+Under 10,peg_u_10
+Over 5,peg_o_5
+Over 10,peg_o_10
+Over 15,peg_o_15
+0 to 1,peg_up_0_1
+1 to 2,peg_up_1_2
+2 to 3,peg_up_2_3
+3 to 5,peg_up_3_5
+High (>5),peg_up_5
+Any,
+Low (<0.1),debteq_l
+High (>0.5),debteq_h
+Under 1,debteq_u_1
+Under 3,debteq_u_3
+Under 5,debteq_u_5
+Under 10,debteq_u_10
+Under 20,debteq_u_20
+Under 25,debteq_u_25
+Under 30,debteq_u_30
+Over 1,debteq_o_1
+Over 3,debteq_o_3
+Over 5,debteq_o_5
+Over 10,debteq_o_10
+Over 20,debteq_o_20
+Over 25,debteq_o_25
+Over 30,debteq_o_30
+Any,
+Low (Under 1%),epsn5y_u
+High (>25%),epsn5y_u_25
+1% to 10%,epsn5y_u_1_10
+10% to 20%,epsn5y_u_1_20
+20% to 30%,epsn5y_u_20_30
+Under 30%,epsn5y_u_30
+Above 30%,epsn5y_o_30
+Any,
+Low (Under 10%),insido_u_10
+High (>30%),insido_u_25
+Over 20%,insido_u_2
+Over 30%,insido_u_3
+Over 40%,insido_u_4
+Over 50%,insido_u_5
+Over 60%,insido_u_6
+Over 70%,insido_u_7
+Any,
+Up,chg_up
+Down,chg_down
+Under 10%,chg_u_1
+Under 25%,chg_u_3
+Under 50%,chg_u_5
+Up 0% to 5%,chg_up_0_5
+Up 5% to 10%,chg_up_5_10
+Up 10% to 25%,chg_up_10_25
+Up 25% to 50%,chg_up_25_50
+Up 50% to 100%,chg_up_50_100
+Up +100%,chg_up_100
+Down 0% to 5%,chg_down_0_5
+Down 5% to 10%,chg_down_5_10
+Down 10% to 25%,chg_down_10_25
+Down 25% to 50%,chg_down_25_50
+Down 50% to 100%,chg_down_50_100
+Down -100%,chg_down_100
+Over 10%,chg_o_1
+Over 25%,chg_o_3
+Over 50%,chg_o_5
+Any,
+Today,earnings_today
+Tomorrow,earnings_tomo
+Yesterday,earnings_y
+This Week,earnings_tw
+Next Week,earnings_nw
+Last Week,earnings_lw
+This Month,earnings_tm
+Next Month,earnings_nm
+Any,
+None (0%),div_n
+Positive (Under 1%),div_u
+High (>10%),div_a_10
+Under 5%,div_u_5
+Under 10%,div_u_10
+Under 15%,div_u_15
+1% to 5%,div_u_1_5
+5% to 10%,div_u_5_10
+Over 1%,div_0_1
+Over 5%,div_0_5
+Over 10%,div_0_10
+Over 15%,div_0_15
+Any,
+Under 0,beta_o
+Under 0.5,beta_up
+Under 5,beta_u_5
+0.5 to 1,beta_up_5_1
+1 to 2,beta_up_1_2
+2 to 3,beta_up_2_3
+3 to 5,beta_up_3_5
+Over 1,beta_o_1
+Over 3,beta_o_3
+Over 5,beta_o_5
+Any,
+Any,
+Under 1,price_u_1
+Under 3,price_u_3
+Under 5,price_u_5
+Under 10,price_u_10
+Under 50,price_u_50
+Under 100,price_u_100
+1 to 3,vol_b_1_3
+1 to 5,vol_b_3_5
+1 to 10,vol_b_5_10
+10 to 50,vol_b_10_50
+50 to 100,vol_b_50_100
+Over 1,price_o_1
+Over 3,price_o_3
+Over 5,price_o_5
+Over 10,price_o_10
+Over 50,price_o_50
+Over 100,vol_o_100
+Any,
+Postive (>0%),profit_m_up
+Negative (<0%),profit_m_d
+0% to 5%,profit_m_up_0_5
+5% to 10%,profit_m_up_5_10
+10% to 25%,profit_m_up_10_25
+25% to 50%,profit_m_up_25_50
+50% to 100%,profit_m_up_50_100
+Under +25%,profit_m_up_25
+Under +50%,profit_m_up_50
+Under +100%,profit_m_up_100
+Over +25%,profit_m_o_25
+Over +50%,profit_m_o_50
+Over +100%,profit_m_o_100
+0% to -5%,profit_m_down_0_5
+-5% to -10%,profit_m_down_5_10
+-10% to -25%,profit_m_down_10_25
+-25% to -50%,profit_m_down_25_50
+-50% to -100%,profit_m_down_50_100
+Under -100%,profit_m_down_100
+Any,
+Postive (>0%),gross_m_up
+Negative (<0%),gross_m_d
+0% to 5%,gross_m_up_0_5
+5% to 10%,gross_m_up_5_10
+10% to 25%,gross_m_up_10_25
+25% to 50%,gross_m_up_25_50
+50% to 100%,gross_m_up_50_100
+Under +25%,gross_m_up_25
+Under +50%,gross_m_up_50
+Under +100%,gross_m_u_100
+Over +25%,gross_m_o_25
+Over +50%,gross_m_o_50
+Over +100%,gross_m_o_100
+0% to -5%,gross_m_down_0_5
+-5% to -10%,gross_m_down_5_10
+-10% to -25%,gross_m_down_10_25
+-25% to -50%,gross_m_down_25_50
+-50% to -100%,gross_m_down_50_100
+Under -100%,gross_m_down_100
+Any,
+Postive (>0%),oper_m_up
+Negative (<0%),oper_m_d
+Under 25%,oper_m_up_25
+Under 50%,oper_m_up_50
+Under 100%,oper_m_up_100
+0% to 5%,oper_m_up_0_5
+5% to 10%,oper_m_up_5_10
+10% to 25%,oper_m_up_10_25
+25% to 50%,oper_m_up_25_50
+50% to 100%,oper_m_up_50_100
+0% to -5%,oper_m_down_0_5
+-5% to -10%,oper_m_down_5_10
+-10% to -25%,oper_m_down_10_25
+-25% to -50%,oper_m_down_25_50
+-50% to -100%,oper_m_down_50_100
+Over +25%,oper_m_o_25
+Over +50%,oper_m_o_50
+Over +100%,oper_m_o_100
+Any,
+Postive (>0%),ernqtrgrth_up
+Negative (<0%),ernqtrgrth_d
+0% to 5%,ernqtrgrth_up_0_5
+% to 10%,ernqtrgrth_up_5_10
+10% to 50%,ernqtrgrth_up_10_50
+50% to 100%,ernqtrgrth_up_50_100
+Under +25%,ernqtrgrth_up_25
+Under +50%,ernqtrgrth_up_50
+Under +100%,ernqtrgrth_up_100
+Over +100%,ernqtrgrth_o_100
+0% to -5%,ernqtrgrth_down_0_5
+w -5% to -10%,ernqtrgrth_down_5_10
+-10% to -50%,ernqtrgrth_down_10_50
+-50% to -100%,ernqtrgrth_down_50_100
+Any,
+Under 50K,vol_u_50
+Under 100K,vol_u_50
+Under 500K,vol_u_50
+Under 1M,vol_u_100
+50K to 100K,vol_b_50_100
+50K to 500K,vol_b_50_500
+500K to 1M,vol_b_50_1000
+1M to 2M,vol_b_1000_2000
+1M to 5M,vol_b_1000_5000
+5M to 10M,vol_b_5000_10000
+10M to 20M,vol_b_10000_20000
+Over 50K,vol_o_50
+Over 100K,vol_o_100
+Over 500K,vol_o_500
+Over 1M,vol_o_1000
+Over 5M,vol_o_5000
+Over 20M,vol_o_20000
+Any,
+Postive (>0%),50davgchg_up
+Negative (<0%),50davgchg_d
+0% to 5%,50davgchg_up_0_5
+5% to 10%,50davgchg_up_5_10
+10% to 50%,50davgchg_up_10_50
+50% to 100%,50davgchg_up_50_100
+Under +25%,50davgchg_u_25
+Under +50%,50davgchg_u_50
+Under +100%,50davgchg_u_100
+Over +50%,50davgchg_o_50
+Over +100%,50davgchg_o_100
+0% to -5%,50davgchg_d_0_5
+-5% to -10%,50davgchg_d_5_10
+-10% to -50%,50davgchg_d_10_50
+-50% to -100%,50davgchg_d_50_100
+Any,
+Postive (>0%),200davgchg_up
+Negative (<0%),200davgchg_d
+0% to 5%,200davgchg_up_0_5
+5% to 10%,200davgchg_up_5_10
+10% to 50%,200davgchg_up_10_50
+50% to 100%,200davgchg_up_50_100
+Under +25%,200davgchg_u_25
+Under +50%,200davgchg_u_50
+Under +100%,200davgchg_u_100
+Over +50%,200davgchg_o_50
+Over +100%,200davgchg_o_100
+0% to -5%,200davgchg_d_0_5
+-5% to -10%,200davgchg_d_5_10
+-10% to -50%,200davgchg_d_10_50
+-50% to -100%,200davgchg_d_50_100
+Any,
+Postive (>0%),52wkhchg_up
+Negative (<0%),52wkhchg_d
+0% to 5%,52wkhchg_up_0_5
+0% to 10%,52wkhchg_up_0_10
+10% to 50%,52wkhchg_up_10_50
+50% to 100%,52wkhchg_up_50_100
+Under +25%,52wkhchg_u_25
+Under +50%,52wkhchg_u_50
+Under +100%,52wkhchg_u_100
+Over +50%,52wkhchg_o_50
+Over +100%,52wkhchg_o_100
+0% to -5%,52wkhchg_down_0_5
+0% to -10%,52wkhchg_d_0_10
+-10% to -50%,52wkhchg_d_10_50
+-50% to -100%,52wkhchg_d_50_100
+Any,
+Postive (>0%),52wklchg_up
+Negative (<0%),52wklchg_d
+0% to 5%,52wklchg_up_0_5
+0% to 10%,52wklchg_up_0_10
+10% to 50%,52wklchg_up_10_50
+50% to 100%,52wklchg_up_50_100
+Under +25%,52wklchg_u_25
+Under +50%,52wklchg_u_50
+Under +100%,52wklchg_u_100
+Over +50%,52wklchg_o_50
+Over +100%,52wklchg_o_100
+0% to -5%,52wklchg_down_0_5
+0% to -10%,52wklchg_d_0_10
+-10% to -50%,52wklchg_d_10_50
+-50% to -100%,52wklchg_d_50_100
+Any,
+Strong Buy (1),recomm_sb
+Buy or better,recomm_1_5
+Buy,recomm_2_5
+Hold or better,recomm_1_3
+Hold,recomm_2_3
+Hold or worse,recomm_1_35
+Sell,recomm_35_4
+Sell or worse,recomm_37_4
+Strong Sell (5),recomm_ss

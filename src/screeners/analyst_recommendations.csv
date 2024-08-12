@@ -1,0 +1,10 @@
+name,value
+Strong Buy (1),recomm_sb
+Buy or better,recomm_1_5
+Buy,recomm_2_5
+Hold or better,recomm_1_3
+Hold,recomm_2_3
+Hold or worse,recomm_1_35
+Sell,recomm_35_4
+Sell or worse,recomm_37_4
+Strong Sell (5),recomm_ss
