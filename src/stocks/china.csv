@@ -1,0 +1,402 @@
+ticker,company,country
+BABA,Alibaba Group Holding Limited,China
+ACH,Aluminum Corporation of China L,China
+HOLI,Hollysys Automation Technologie,China
+ATHM,Autohome Inc.,China
+ZNH,China Southern Airlines Company,China
+CAAS,"China Automotive Systems, Inc.",China
+CALI,CHINA AUTO LOGISTICS,China
+ANPDF,ANTA SPORTS PRODUCTS,China
+AACAY,AAC TECHNOLOGIES HOLDINGS INC U,China
+ALMMF,ALUMINUM CORP OF CHINA(CHALCO),China
+AHCHY,ANHUI CONCH CEMENT UNSP ADR EAC,China
+BIDU,"Baidu, Inc.",China
+BZUN,Baozun Inc.,China
+BRLI,Brilliant Acquisition Corporati,China
+KWBT,KIWA BIO-TECH PRODUCTS GROUP CO,China
+BWOWF,WOWJOINT HOLDINGS LIMITED,China
+BEST,BEST Inc.,China
+BACHY,BANK OF CHINA LTD UNSP ADR EACH,China
+TSGTF,TSINGTAO BREWERY CO,China
+CICHY,CHINA CONSTRUCTION BANK UNSP AD,China
+WB,Weibo Corporation,China
+SNP,China Petroleum & Chemical Corp,China
+XIN,Xinyuan Real Estate Co Ltd,China
+JKS,JinkoSolar Holding Company Limi,China
+UTSI,UTStarcom Holdings Corp,China
+PTR,PetroChina Company Limited,China
+CXDC,CHINA XD PLASTICS COMPANY LIMIT,China
+LFC,China Life Insurance Company Li,China
+HTHT,H World Group Limited,China
+DQ,DAQO New Energy Corp.,China
+TOUR,Tuniu Corporation,China
+CSUAY,CHINA SHENHUA ENERGY COMPANY LT,China
+CMCM,Cheetah Mobile Inc.,China
+CNET,ZW Data Action Technologies Inc,China
+DEER,DEER CONSUMER PRODUCTS INC,China
+EDU,New Oriental Education & Techno,China
+SRRE,SUNRISE REAL ESTATE GROUP INC,China
+CUAEF,CHINA SHENHUA ENERGY COMPANY LT,China
+FENG,Phoenix New Media Limited,China
+NIO,NIO Inc.,China
+CMFO,CHINA MARINE FOOD GROUP LIMITED,China
+KNDI,"Kandi Technologies Group, Inc.",China
+TAL,TAL Education Group,China
+VNET,"VNET Group, Inc.",China
+VIPS,Vipshop Holdings Limited,China
+NOAH,Noah Holdings Limited,China
+HNP,Huaneng Power Intl,China
+LEJU,Leju Holdings Limited,China
+TCTZF,TENCENT HOLDINGS LIMITED,China
+JP,Jupai Holdings Limited,China
+TCEHY,TENCENT HOLDINGS LIMITED UNSP A,China
+HERB,YASHENG GROUP,China
+CICOY,COSCO SHIPPING HOLDINGS UNSP AD,China
+TCYMF,TINGYI(CAYMAN ISLANDS)HLDG CORP,China
+SNYYF,SANY HEAVY EQUIPMENT INTL HLDG,China
+SOHU,Sohu.com Limited,China
+NTES,"NetEase, Inc.",China
+JD,"JD.com, Inc.",China
+JOBS,"51job, Inc.",China
+KGJI,Kingold Jewelry Inc.,China
+JADA,JADE ART GROUP INC,China
+YRD,Yiren Digital Ltd.,China
+XNET,Xunlei Limited,China
+BYDDF,BYD COMPANY LIMITED,China
+TSGTY,TSINGTAO BREWERY CO SPNS ADR EA,China
+MOMO,Hello Group Inc.,China
+NTP,Nam Tai Property Inc.,China
+IDCBY,INDUSTRIAL & COMMERCIAL BK OF C,China
+IDCBF,INDUSTRIAL & COMMERCIAL BK OF C,China
+ACGBY,AGRICULTURAL BANK OF CHINA UNSP,China
+PNGAY,PING AN INSURANCE(GROUP)CO.OF C,China
+BACHF,BANK OF CHINA LTD,China
+ACGBF,AGRICULTURAL BANK OF CHINA,China
+RINO,RINO INTERNATIONAL CORPORATION,China
+GNGYF,GUANGSHEN RAILWAY CO,China
+SUWN,SUNWIN STEVIA INTERNATIONAL INC,China
+T14.SI,Tianjin ZX USD,China
+GWLLY,GREAT WALL MOTOR COMPANY LIMITE,China
+WQTEF,WEIQIAO TEXTILE CO,China
+SHWGF,SHANDONG WEIGAO GROUP MEDICAL,China
+GWLLF,GREAT WALL MOTOR COMPANY LIMITE,China
+SHWGY,SHANDONG WEIGAO GROUP MEDICAL U,China
+WEICY,WEICHAI POWER CO,China
+XJNGF,XINJIANG GOLDWIND SCIENCE&TECHN,China
+XNGSY,ENN ENERGY HOLDINGS LTD UNSP AD,China
+SYUP,ANBC INC,China
+YZCFF,SINOPEC OILFIELD SERVICE CORPOR,China
+YSHLF,YANGZIJIANG SHIPBUILDING,China
+ZTCOY,ZTE CORPORATION UNSP ADR EACH R,China
+ZTCOF,ZTE CORPORATION,China
+ZIJMF,ZIJIN MINING GROUP CO.LTD,China
+ZHEXF,ZHEJIANG EXPRESSWAY CO,China
+ZLIOY,ZOOMLION HEAVY IND SC&TH CO LTD,China
+SIAF,SINO AGRO FOODS INC,China
+AHCHF,ANHUI CONCH CEMENT,China
+AICAF,AIR CHINA LTD,China
+AIDA,AIDA PHARMA INC,China
+BJCHF,BEIJING CAPITAL INT AIRPORT,China
+CHKIF,CHINA SOUTHERN AIRLINES COMPANY,China
+ANGGF,ANGANG STEEL CO LTD,China
+PPCCY,PICC PROPERTY & CASUALTY CO UNS,China
+ANPDY,ANTA SPORTS PRODUCTS UNSP ADR E,China
+PIAIF,PING AN INSURANCE(GROUP)CO.OF C,China
+GRVWF,GREATVIEW ASEPTIC PACKAGING CO,China
+CCGDF,CHINA CINDA ASSET MANAGEMENT CO,China
+GNZUF,GUANGZHOU AUTOMOBILE GROUP,China
+CIHKY,CHINA MERCHANTS BANK CO LTD UNS,China
+CIHHF,CHINA MERCHANTS BANK CO LTD,China
+CICHF,CHINA CONSTRUCTION BANK,China
+CHCJY,CHINA CITIC BANK CORPORATION LT,China
+CDBT,CHINA DASHENG BIOTECHNOLOGY COM,China
+BKFCF,BANK OF COMMUNICATIONS CO LTD,China
+CBLUF,CHINA BLUECHEMICAL LIMITED,China
+BYDDY,BYD COMPANY LIMITED UNSP ADR EA,China
+BYDIF,BYD ELECTRONIC INTERNATIONAL CO,China
+JFIL,JUBILANT FLAME INTERNATIONAL LT,China
+CCOZF,CHINA COAL ENERGY COMPANY,China
+CDGXF,CHINA DONGXIANG (GROUP) CO LTD,China
+CEHD,CHINA ELECTRONICS HLDGS INC,China
+CFTLF,CHINASOFT INTERNATIONAL LIMITED,China
+SOHOF,SOHO CHINA LIMITED,China
+CREQF,CHINA RARE EARTH HLDGS,China
+CLPXY,CHINA LONGYUAN POWER GROUP CORP,China
+CITAF,COSCO SHIPPING DEVELOPMENT CO L,China
+CILJF,CHINA LIFE INSURANCE CO,China
+CHSO,CHINA SHOUGUAN INVT HLDG GROUP,China
+CHME,CHINA MEDICINE CORP,China
+CHCC,CHINA CHEMICAL CORP,China
+CICOF,COSCO SHIPPING HOLDINGS,China
+CMCLF,CMOC GROUP LIMITED,China
+CNER,CHINA NEW ENERGY GROUP COMPANY,China
+CHJTF,CSPC PHARMACEUTICAL GROUP LIMIT,China
+CSDXF,COSCO SHIPPING ENGY TPT CO LTD,China
+CTRYF,COUNTRY GARDEN HLDGS CO LTD,China
+CTRYY,COUNTRY GARDEN HLDGS CO LTD UNS,China
+DNFGF,DONGFENG MOTOR GROUP CO,China
+GCPEF,GCL TECHNOLOGY HOLDINGS LTD,China
+SEXHF,SICHUAN EXPRESSWAY CO,China
+SFOSF,SHANGHAI FOSUN PHARMACEUTICAL G,China
+GENX,GENEX PHARMACEUTICALS INC,China
+SHTDF,SINOPHARM GROUP CO. LTD.,China
+HEGIF,HENGAN INTERNATIONAL,China
+HEGIY,HENGAN INTERNATIONAL UNSP ADR E,China
+IINX,IONIX TECHNOLOGY INC,China
+LGFRY,LONGFOR GROUP HLDGS LTD UNSP AD,China
+LNNGF,LI NING CO LTD,China
+SNPTF,SUNNY OPTICAL TECHNOLOGY GROUP,China
+PCCYF,PETROCHINA CO,China
+SNPMF,CHINA PETROLEUM & CHEMICAL CORP,China
+SHPMY,SHANGHAI PHARMACEUTICALS HOLDIN,China
+TNPH,TIAN'AN PHARMACEUTICAL COMPANY,China
+SHTDY,SINOPHARM GROUP CO. LTD. UNSP A,China
+TSIOF,361 DEGREES INTERNATIONAL LIMIT,China
+YUMC,"Yum China Holdings, Inc.",China
+CCNC,Code Chain New Continent Limite,China
+BILI,Bilibili Inc.,China
+HUYA,HUYA Inc.,China
+IQ,"iQIYI, Inc.",China
+XIACF,XIAOMI CORPORATION,China
+UXIN,Uxin Limited,China
+SOS,SOS Limited,China
+LI,Li Auto Inc.,China
+XPEV,XPeng Inc.,China
+TIGR,UP Fintech Holding Limited,China
+LKCO,Luokung Technology Corp,China
+EBON,Ebang International Holdings In,China
+NIU,Niu Technologies,China
+DIDI,DiDi Global Inc.,China
+DOYU,DouYu International Holdings Li,China
+GOTU,Gaotu Techedu Inc.,China
+GSMG,Glory Star New Media Group Hold,China
+ZEPP,Zepp Health Corporation,China
+RCON,"Recon Technology, Ltd.",China
+YQ,17 Education & Technology Group,China
+SNTG,Sentage Holdings Inc.,China
+GNENF,GANFENG LITHIUM GROUP CO LTD,China
+RLX,RLX Technology Inc.,China
+CPOP,"Pop Culture Group Co., Ltd",China
+JZXN,"Jiuzi Holdings, Inc.",China
+UPC,Universe Pharmaceuticals Inc,China
+EH,EHang Holdings Limited,China
+CREG,Smart Powerr Corp.,China
+LU,Lufax Holding Ltd,China
+PBTS,"Powerbridge Technologies Co., L",China
+YMM,Full Truck Alliance Co. Ltd.,China
+BTB,Bit Brother Limited,China
+TME,Tencent Music Entertainment Gro,China
+BEKE,KE Holdings Inc,China
+METX,Meten Holding Group Ltd.,China
+QFIN,"Qifu Technology, Inc",China
+WIMI,WiMi Hologram Cloud Inc.,China
+GLG,"TD Holdings, Inc.",China
+DAO,"Youdao, Inc.",China
+RAAS,Cloopen Group Holding Limited,China
+CLEU,China Liberal Education Holding,China
+LKNCY,Luckin Coffee Inc.,China
+QD,Qudian Inc.,China
+WAFU,Wah Fu Education Group Limited,China
+YSG,Yatsen Holding Limited,China
+NEW,Puxin Limited,China
+KC,Kingsoft Cloud Holdings Limited,China
+LX,LexinFintech Holdings Ltd.,China
+GDS,GDS Holdings Limited,China
+LAIX,LAIX Inc.,China
+FINV,FinVolution Group,China
+ZME,Zhangmen Education Inc.,China
+ONE,OneSmart International Educatio,China
+TEDU,"Tarena International, Inc.",China
+OCFT,OneConnect Financial Technology,China
+DADA,Dada Nexus Limited,China
+MNSO,MINISO Group Holding Limited,China
+MF,Missfresh Limited,China
+TIRX,TIAN RUIXIANG Holdings Ltd,China
+ZH,Zhihu Inc.,China
+LIZI,LIZHI INC.,China
+AACG,ATA Creativity Global,China
+WEI,Weidai Ltd.,China
+MKD,Molecular Data Inc.,China
+WNW,Meiwu Technology Company Limite,China
+ZLAB,Zai Lab Limited,China
+UTME,UTime Limited,China
+FAMI,"Farmmi, Inc. Ordinary Shares",China
+JG,Aurora Mobile Limited,China
+YJ,Yunji Inc. - American Depositor,China
+BHAT,Blue Hat Interactive Entertainm,China
+CANG,Cango Inc.,China
+MOXC,Moxian (BVI) Inc,China
+SEED,Origin Agritech Limited,China
+VIOT,"Viomi Technology Co., Ltd",China
+ANPC,"AnPac Bio-Medical Science Co.,",China
+CBAT,"CBAK Energy Technology, Inc.",China
+NCTY,The9 Limited - American Deposit,China
+YGMZ,MingZhu Logistics Holdings Limi,China
+MPNGY,MEITUAN,China
+WDH,Waterdrop Inc.,China
+YI,"111, Inc.",China
+DUO,Fangdd Network Group Ltd.,China
+ZTO,ZTO Express (Cayman) Inc.,China
+ZKIN,"ZK International Group Co., Ltd",China
+TANH,Tantech Holdings Ltd.,China
+MPNGF,MEITUAN,China
+EZGO,EZGO Technologies Ltd.,China
+DDL,Dingdong (Cayman) Limited,China
+ITP,"IT Tech Packaging, Inc.",China
+EVK,"Ever-Glory International Group,",China
+BNR,Burning Rock Biotech Limited,China
+DTSS,Datasea Inc.,China
+MOGU,MOGU Inc.,China
+NISN,NiSun Intl Enterprise Developme,China
+TUYA,Tuya Inc.,China
+CGSHY,COUNTRY GARDEN SVCS HLDGS CO LT,China
+BABAF,ALIBABA GROUP HOLDING LTD,China
+QTT,Qutoutiao Inc.,China
+CASI,"CASI Pharmaceuticals, Inc.",China
+RERE,ATRenew Inc.,China
+TAOP,Taoping Inc.,China
+TYHT,"Shineco, Inc.",China
+UK,Ucommune International Ltd,China
+FHS,First High-School Education Gro,China
+BZ,KANZHUN LIMITED - American Depo,China
+IFBD,"Infobird Co., Ltd",China
+WXXWY,WUXI BIOLOGICS (CAYMAN) INC UNS,China
+BON,Bon Natural Life Limited,China
+AIHS,Senmiao Technology Limited,China
+EGRNF,CHINA EVERGRANDE GROUP,China
+QK,Q&K International Group Limited,China
+CPHI,"China Pharma Holdings, Inc.",China
+HX,Xiaobai Maimai Inc.,China
+SXTC,"China SXT Pharmaceuticals, Inc.",China
+EJH,E-Home Household Service Holdin,China
+KBSF,KBS Fashion Group Limited,China
+BAOS,Baosheng Media Group Holdings L,China
+CTK,CooTek (Cayman) Inc.,China
+MOHO,ECMOHO Limited,China
+STG,Sunlands Technology Group,China
+REDU,RISE Education Cayman Ltd,China
+KUASF,KUAISHOU TECHNOLOGY,China
+KXIN,Kaixin Auto Holdings,China
+TGGI,TRANS GLOBAL GROUP INC,China
+ANTE,AirNet Technology Inc.,China
+HGYN,HONG YUAN HOLDING GROUP,China
+JRJC,China Finance Online Co. Limite,China
+HUIZ,Huize Holding Limited,China
+GRCL,Gracell Biotechnologies Inc.,China
+DOGZ,Dogness (International) Corpora,China
+XNYIF,XINYI SOLAR HOLDINGS LIMITED,China
+PETZ,"TDH Holdings, Inc.",China
+JFIN,Jiayin Group Inc.,China
+JDCMF,JD.COM INC,China
+JFU,9F Inc.,China
+QH,Quhuo Limited - American Deposi,China
+EM,Smart Share Global Limited,China
+JWEL,Jowell Global Ltd.,China
+BLCT,BlueCity Holdings Limited,China
+SY,So-Young International Inc. - A,China
+SHI,SINOPEC Shangai Petrochemical C,China
+CIMEF,CIMC ENRIC HOLDINGS LIMITED,China
+OG,Onion Global Limited,China
+BEDU,Bright Scholar Education Holdin,China
+CNICF,CHINA INTL CAPITAL CORPORATION,China
+CD,Chindata Group Holdings Limited,China
+GURE,"Gulf Resources, Inc.",China
+FEDU,Four Seasons Education (Cayman),China
+HAPP,Happiness Development Group Lim,China
+TC,TuanChe Limited,China
+PHCF,Puhui Wealth Investment Managem,China
+NETTF,NETEASE INC,China
+HUDI,"Huadi International Group Co.,",China
+EDTK,Skillful Craftsman Education Te,China
+PT,Pintec Technology Holdings Limi,China
+KRKR,36Kr Holdings Inc.,China
+CNEY,CN Energy Group Inc.,China
+XYF,X Financial,China
+DRGV,DRAGON CAPITAL GROUP CORPORATIO,China
+LLL,JX Luxventure Limited,China
+SISI,"Shineco, Inc.",China
+ZGYH,Yunhong International,China
+BAIDF,BAIDU INC,China
+SECO,Secoo Holding Limited,China
+CJJD,"China Jo-Jo Drugstores, Inc.",China
+RETO,"ReTo Eco-Solutions, Inc.",China
+ZCMD,Zhongchao Inc.,China
+PME,Pingtan Marine Enterprise Ltd.,China
+SJ,Scienjoy Holding Corporation,China
+BQ,Boqii Holding Limited,China
+PLIN,"China Xiangtai Food Co., Ltd.",China
+DXF,Dunxin Financial Holdings Limit,China
+KUKE,Kuke Music Holding Limited,China
+HSHCY,HAIER SMART HOME CO LTD UNSPON,China
+JT,Jianpu Technology Inc.,China
+ADAG,Adagene Inc.,China
+BMCLF,BAIC MOTOR CORPORATION LIMITED,China
+WUXAY,WUXI APPTEC CO LTD UNSPON ADS E,China
+YZCAY,YANKUANG ENERGY GROUP COMPANY L,China
+CHWRF,CHINA TOWER CORP LTD,China
+HGSH,"China HGS Real Estate, Inc.",China
+MHUA,Meihua International Medical Te,China
+CGA,"China Green Agriculture, Inc.",China
+AHG,Akso Health Group,China
+CEA,China Eastern Airlines Corporat,China
+XIACY,XIAOMI CORPORATION UNSPON ADS E,China
+SDH,"Global Internet of People, Inc.",China
+GRCY,Greencity Acquisition Corporati,China
+OST,"Ostin Technology Group Co., Ltd",China
+GNNSF,GENSCRIPT BIOTECH CORPORATION,China
+LXEH,"Lixiang Education Holding Co.,",China
+LBTI,LITHIUM AND BORON TECHNOLOGY IN,China
+DIDIY,DiDi Global Inc.,China
+GGE,Green Giant Inc.,China
+GSUN,Golden Sun Education Group Limi,China
+N/A,Nano Labs Ltd,China
+FFHL,"Fuwei Films (Holdings) Co., Ltd",China
+WETG,WeTrade Group Inc.,China
+PPCCF,PICC PROPERTY & CASUALTY CO,China
+CNF,CNFinance Holdings Limited,China
+NAAS,Naas Technology Inc.,China
+GEHI,"Gravitas Education Holdings, In",China
+JZ,Jianzhi Education Technology Gr,China
+ATXG,Addentax Group Corp.,China
+EPOW,"Sunrise New Energy Co., Ltd",China
+HOLO,MicroCloud Hologram Inc.,China
+GNENY,GANFENG LITHIUM GROUP CO LTD UN,China
+ATAT,Atour Lifestyle Holdings Limite,China
+THCH,TH International Limited,China
+SNPTY,CHINA PETROLEUM & CHEMICAL CORP,China
+FLJ,FLJ Group Limited,China
+YZCHF,YANKUANG ENERGY GROUP COMPANY L,China
+MLGO,"MicroAlgo, Inc.",China
+RAYA,Erayak Power Solution Group Inc,China
+LANV,Lanvin Group Holdings Limited,China
+HUNGF,HUANENG POWER INTERNATIONAL INC,China
+MMV,MultiMetaVerse Holdings Limited,China
+CHFLF,CHINA FEIHE LTD,China
+NWWCF,NEW CHINA LIFE INSURANCE CO LTD,China
+LICN,Lichen China Limited,China
+HSAI,Hesai Group,China
+AIXI,XIAO-I Corporation,China
+YS,"YS Biopharma Co., Ltd.",China
+TYCMY,TINGYI(CAYMAN ISLANDS)HLDG CORP,China
+SFWL,Shengfeng Development Limited,China
+IZM,ICZOOM Group Inc.,China
+ACHHY,ALUMINUM CORP OF CHINA(CHALCO),China
+CHSN,Chanson International Holding,China
+UCAR,U Power Limited,China
+JYD,Jayud Global Logistics Limited,China
+TCJH,Top KingWin Ltd,China
+JXJT,JX Luxventure Limited,China
+HLP,Hongli Group Inc.,China
+YGF,YanGuFang International Group C,China
+ZJYL,JIN MEDICAL INTERNATIONAL LTD.,China
+CEAYY,CHINA EASTERN AIRLINES CORP ADR,China
+QLI,Qilian International Holding Gr,China
+ECX,ECARX Holdings Inc.,China
+RTC,Baijiayun Group Ltd - Class,China
+SDA,SunCar Technology Group Inc.,China
+QSG,QuantaSing Group Limited,China
+SNTMF,SENSETIME GRP INC,China
+CJET,"Chijet Motor Company, Inc.",China
+HKIT,Hitek Global Inc.,China
+WXIBF,WUXI BIOLOGICS (CAYMAN) INC,China
+SVMB,SAVMOBI TECHNOLOGY INC,China

@@ -56,15 +56,21 @@ def insider_trades_all():
     return json.loads(result)
 
 
-@app.get("/source-data")
-def countries():
-    result = service.source_data()
-    return json.loads(result)
-
-
 @app.get("/multiple-screener")
 def multiple_screener():
     result = service.multiple_screener()
+    return json.loads(result)
+
+
+@app.get("/screeners-scraper")
+def screeners_scraper():
+    result = service.screeners_scraper()
+    return json.loads(result)
+
+
+@app.get("/list-stock-country-scraper")
+def list_stocks_country_scraper():
+    result = service.list_stocks_country_scraper()
     return json.loads(result)
 
 

@@ -151,7 +151,7 @@ class Scraper:
         finally:
             return json.dumps(result)
 
-    def source_data(self):
+    def screeners_scraper(self):
         result = []
         try:
             response = self.session.get("{}/screener".format(self.url), headers=self.headers)
@@ -222,7 +222,8 @@ class Scraper:
     def multiple_screener(self):
         result = []
 
-        url = "{}/screener/1?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(self.url)
+        url = "{}/screener/1?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(
+            self.url)
         try:
             response = self.session.get(url, headers=self.headers)
             tree = html.fromstring(response.content)
@@ -237,7 +238,8 @@ class Scraper:
                 return 0
 
             for page in range(2, total_pages + 1):
-                url_access = "{}/screener/{}?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(self.url, page)
+                url_access = "{}/screener/{}?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(
+                    self.url, page)
                 result += self._screener(url_access)
         except Exception as e:
             print(f"Error occurred during scraping: {e}")
@@ -277,5 +279,68 @@ class Scraper:
                 'price': price,
                 'change': change.strip(),
                 'volume': volume
+            })
+        return result
+
+    def list_stocks_country_scraper(self):
+        response = "success"
+
+        with open('./src/screeners/countries.csv', 'r', newline='', encoding='utf-8') as files:
+            reader = csv.DictReader(files)
+            for r in reader:
+                country = r['value']
+                result = []
+                url = "{}/screener/1?cntry={}".format(self.url, country)
+                try:
+                    page = self.session.get(url, headers=self.headers)
+                    tree = html.fromstring(page.content)
+                    result += self._screener_stocks(url)
+
+                    page_info_span = tree.cssselect('span:contains("Page")')
+                    if page_info_span:
+                        page_info_text = page_info_span[0].text_content().strip()
+                        total_pages = page_info_text.split()[-1]
+                        total_pages = int(total_pages)
+                    else:
+                        total_pages = 0
+
+                    if total_pages > 1:
+                        for page in range(2, total_pages + 1):
+                            url_access = "{}/screener/{}?cntry={}".format(self.url, page, country)
+                            result += self._screener_stocks(url_access)
+
+                    with open(f'./src/stocks/{country}.csv', 'w', newline='', encoding='utf-8') as csvfile:
+                        fieldnames = ['ticker', 'company', 'country']
+                        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                        writer.writeheader()
+                        for row in result:
+                            writer.writerow(row)
+                except Exception as e:
+                    response = "error"
+                    print(f"Error occurred during scraping: {e}")
+        return json.dumps({"status": response})
+
+    def _screener_stocks(self, url):
+        result = []
+        response = self.session.get(url, headers=self.headers)
+        tree = html.fromstring(response.content)
+        translator = GenericTranslator()
+
+        rows_xpath = translator.css_to_xpath(
+            'table.table.table-striped.table-hover.table-sm.table-bordered.analytic tbody tr')
+        rows = tree.xpath(rows_xpath)
+        for row in rows:
+            cols_xpath = translator.css_to_xpath('td')
+            cols = row.xpath(cols_xpath)
+
+            ticker = cols[0].xpath('.//a/text()')[0] if cols[0].xpath('.//a/text()') else ""
+            company = cols[1].text_content().strip()
+            country = cols[4].text_content().strip()
+
+            result.append({
+                'ticker': ticker.strip(),
+                'company': company,
+                'country': country,
             })
         return result
