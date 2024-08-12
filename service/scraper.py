@@ -144,7 +144,7 @@ class Scraper:
                     "value($)": value.strip(),
                     "shareOwn": share_own.strip(),
                     "SECForm4": sec_form_4.strip(),
-                    "SECForm4Link": sec_form_4_link.strip()
+                    "SECForm4Link": sec_form_4_link
                 })
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
@@ -222,8 +222,7 @@ class Scraper:
     def multiple_screener(self):
         result = []
 
-        url = "{}/screener/1?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(
-            self.url)
+        url = "{}/screener/1?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(self.url)
         try:
             response = self.session.get(url, headers=self.headers)
             tree = html.fromstring(response.content)
