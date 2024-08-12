@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 
 from service import Scraper
+from service import list_country, list_stocks_by_country
 
 app = FastAPI()
 service = Scraper()
@@ -59,6 +60,18 @@ def insider_trades_all():
 @app.get("/multiple-screener")
 def multiple_screener():
     result = service.multiple_screener()
+    return json.loads(result)
+
+
+@app.get("/list-country")
+def countries():
+    result = list_country()
+    return result
+
+
+@app.get("/stocks-by-country/{country}")
+def stocks_by_country(country: str):
+    result = list_stocks_by_country(country)
     return json.loads(result)
 
 
