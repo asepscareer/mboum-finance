@@ -75,13 +75,31 @@ def stocks_by_country(country: str):
     return json.loads(result)
 
 
-@app.get("/screeners-scraper")
+@app.get("/oversold/{country}")
+def oversold(country: str):
+    result = service.oversold(country)
+    return json.loads(result)
+
+
+@app.get("/overbought-stocks/{country}")
+def overbought_stocks(country: str):
+    result = service.overbought_stocks(country)
+    return json.loads(result)
+
+
+@app.get("/upcoming-earnings/{country}")
+def upcoming_earnings(country: str):
+    result = service.upcoming_earnings(country)
+    return json.loads(result)
+
+
+# @app.get("/screeners-scraper")
 def screeners_scraper():
     result = service.screeners_scraper()
     return json.loads(result)
 
 
-@app.get("/list-stock-country-scraper")
+# @app.get("/list-stock-country-scraper")
 def list_stocks_country_scraper():
     result = service.list_stocks_country_scraper()
     return json.loads(result)

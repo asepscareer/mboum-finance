@@ -7,7 +7,6 @@ def list_country():
     with open('./src/screeners/countries.csv', 'r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            print(row)
             countries.append(row['name'])
     return countries
 

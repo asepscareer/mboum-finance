@@ -31,59 +31,70 @@ class Scraper:
                 title = row.cssselect('td a')[0].text
                 link = row.cssselect('td a')[0].get('href')
                 result.append({"time": time, "headline": title, "link": link})
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            return json.dumps(result)
+            return None
 
     def stats(self, symbol):
         def to_camel_case(text):
             components = text.split()
             return components[0].lower() + ''.join(x.title() for x in components[1:])
 
-        response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
-        tree = html.fromstring(response.content)
+        try:
+            response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
+            tree = html.fromstring(response.content)
 
-        symbol = tree.xpath('//div[@class="text-center p-1"]/a[1]/b/text()')[0]
-        company_name = tree.xpath('//div[@class="text-center p-1"]/a[2]/text()')[0]
+            symbol = tree.xpath('//div[@class="text-center p-1"]/a[1]/b/text()')[0]
+            company_name = tree.xpath('//div[@class="text-center p-1"]/a[2]/text()')[0]
 
-        data = {
-            'symbol': symbol,
-            'name': company_name
-        }
+            data = {
+                'symbol': symbol,
+                'name': company_name
+            }
 
-        rows = tree.xpath('//tr[@class="d-flex"]')
-        for row in rows:
-            columns = row.xpath('.//td')
-            for i in range(0, len(columns), 2):
-                key = columns[i].text_content().strip()
-                value = columns[i + 1].xpath('.//b')[0].text_content().strip()
-                camel_case_key = to_camel_case(key)
-                data[camel_case_key] = value
-
-        return json.dumps(data)
+            rows = tree.xpath('//tr[@class="d-flex"]')
+            for row in rows:
+                columns = row.xpath('.//td')
+                for i in range(0, len(columns), 2):
+                    key = columns[i].text_content().strip()
+                    value = columns[i + 1].xpath('.//b')[0].text_content().strip()
+                    camel_case_key = to_camel_case(key)
+                    data[camel_case_key] = value
+            return json.dumps(data)
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+            return None
 
     def desc(self, symbol):
-        response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
-        tree = html.fromstring(response.content)
+        try:
+            response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
+            tree = html.fromstring(response.content)
 
-        company_name = tree.cssselect('.card-header')[0].text_content().replace('About ', '')
-        description = tree.cssselect('.card-text')[0].text_content().strip()
-        data = {'name': company_name, 'description': description}
-        return json.dumps(data)
+            company_name = tree.cssselect('.card-header')[0].text_content().replace('About ', '')
+            description = tree.cssselect('.card-text')[0].text_content().strip()
+            data = {'name': company_name, 'description': description}
+            return json.dumps(data)
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+            return None
 
     def latest_news(self):
-        response = self.session.get("{}/news".format(self.url), headers=self.headers)
-        tree = html.fromstring(response.content)
+        try:
+            response = self.session.get("{}/news".format(self.url), headers=self.headers)
+            tree = html.fromstring(response.content)
 
-        data = []
-        for row in tree.cssselect('table tr'):
-            time = row.cssselect('td')[0].text_content()
-            headline_elem = row.cssselect('td a')[0]
-            headline = headline_elem.text_content().strip()
-            authors = headline_elem.getnext().text_content().strip()
-            data.append({'time': time, 'headline': headline, 'authors': authors})
-        return json.dumps(data)
+            data = []
+            for row in tree.cssselect('table tr'):
+                time = row.cssselect('td')[0].text_content()
+                headline_elem = row.cssselect('td a')[0]
+                headline = headline_elem.text_content().strip()
+                authors = headline_elem.getnext().text_content().strip()
+                data.append({'time': time, 'headline': headline, 'authors': authors})
+            return json.dumps(data)
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+            return None
 
     def analyst_ratings(self, symbol):
         result = []
@@ -99,10 +110,11 @@ class Scraper:
                     rating = columns[1].text_content()
                     date = columns[2].text_content()
                     result.append({"analyst": analyst, "rating": rating, "date": date})
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            return json.dumps(result)
+            return None
+
 
     def insider_trades(self, symbol):
         result = []
@@ -146,10 +158,11 @@ class Scraper:
                     "SECForm4": sec_form_4.strip(),
                     "SECForm4Link": sec_form_4_link
                 })
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            return json.dumps(result)
+            return None
+
 
     def screeners_scraper(self):
         result = []
@@ -173,10 +186,11 @@ class Scraper:
                 writer.writeheader()
                 for row in result:
                     writer.writerow(row)
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            return json.dumps(result)
+            return None
+
 
     def all_insider_trades(self):
         result = []
@@ -214,10 +228,12 @@ class Scraper:
                     'SECForm4Date': sec_form_4_date.strip(),
                     'SECForm4Link': sec_form_4_link.strip(),
                 })
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
         finally:
-            return json.dumps(result)
+            logging.error("An unexpected error occurred: {}".format(e))
+            return None
 
     def multiple_screener(self):
         result = []
@@ -241,10 +257,10 @@ class Scraper:
                 url_access = "{}/screener/{}?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(
                     self.url, page)
                 result += self._screener(url_access)
+            return json.dumps(result)
         except Exception as e:
             print(f"Error occurred during scraping: {e}")
-        finally:
-            return json.dumps(result)
+            return None
 
     def _screener(self, url):
         result = []
@@ -283,43 +299,45 @@ class Scraper:
         return result
 
     def list_stocks_country_scraper(self):
-        response = "success"
+        try:
+            with open('./src/screeners/countries.csv', 'r', newline='', encoding='utf-8') as files:
+                reader = csv.DictReader(files)
+                for r in reader:
+                    country = r['value']
+                    result = []
+                    url = "{}/screener/1?cntry={}".format(self.url, country)
+                    try:
+                        page = self.session.get(url, headers=self.headers)
+                        tree = html.fromstring(page.content)
+                        result += self._screener_stocks(url)
 
-        with open('./src/screeners/countries.csv', 'r', newline='', encoding='utf-8') as files:
-            reader = csv.DictReader(files)
-            for r in reader:
-                country = r['value']
-                result = []
-                url = "{}/screener/1?cntry={}".format(self.url, country)
-                try:
-                    page = self.session.get(url, headers=self.headers)
-                    tree = html.fromstring(page.content)
-                    result += self._screener_stocks(url)
+                        page_info_span = tree.cssselect('span:contains("Page")')
+                        if page_info_span:
+                            page_info_text = page_info_span[0].text_content().strip()
+                            total_pages = page_info_text.split()[-1]
+                            total_pages = int(total_pages)
+                        else:
+                            total_pages = 0
 
-                    page_info_span = tree.cssselect('span:contains("Page")')
-                    if page_info_span:
-                        page_info_text = page_info_span[0].text_content().strip()
-                        total_pages = page_info_text.split()[-1]
-                        total_pages = int(total_pages)
-                    else:
-                        total_pages = 0
+                        if total_pages > 1:
+                            for page in range(2, total_pages + 1):
+                                url_access = "{}/screener/{}?cntry={}".format(self.url, page, country)
+                                result += self._screener_stocks(url_access)
 
-                    if total_pages > 1:
-                        for page in range(2, total_pages + 1):
-                            url_access = "{}/screener/{}?cntry={}".format(self.url, page, country)
-                            result += self._screener_stocks(url_access)
+                        with open(f'./src/stocks/{country}.csv', 'w', newline='', encoding='utf-8') as csvfile:
+                            fieldnames = ['ticker', 'company', 'country']
+                            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-                    with open(f'./src/stocks/{country}.csv', 'w', newline='', encoding='utf-8') as csvfile:
-                        fieldnames = ['ticker', 'company', 'country']
-                        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-                        writer.writeheader()
-                        for row in result:
-                            writer.writerow(row)
-                except Exception as e:
-                    response = "error"
-                    print(f"Error occurred during scraping: {e}")
-        return json.dumps({"status": response})
+                            writer.writeheader()
+                            for row in result:
+                                writer.writerow(row)
+                    except Exception as e:
+                        print(f"Error occurred during scraping: {e}")
+                        return None
+            return json.dumps({"status": "success"})
+        except Exception as e:
+            print(f"Error occurred during scraping: {e}")
+            return None
 
     def _screener_stocks(self, url):
         result = []
@@ -336,11 +354,69 @@ class Scraper:
 
             ticker = cols[0].xpath('.//a/text()')[0] if cols[0].xpath('.//a/text()') else ""
             company = cols[1].text_content().strip()
+            industry = cols[2].text_content().strip()
+            sector = cols[3].text_content().strip()
             country = cols[4].text_content().strip()
 
             result.append({
                 'ticker': ticker.strip(),
                 'company': company,
+                'industry': industry,
+                'sector': sector,
                 'country': country,
             })
         return result
+
+    def oversold(self, country):
+        result = []
+        value_country = ""
+        try:
+            with open('./src/screeners/countries.csv', 'r') as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    if row['name'].strip().lower() == country.lower():
+                        value_country = row['value']
+                        break
+            url = "{}/screener?cntry={}&dividend=div_0_1&volume=vol_o_50&wklchg52=52wklchg_up_0_5&recomm=recomm_1_3&st=desc".format(
+                self.url, value_country)
+            result += self._screener_stocks(url)
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+        finally:
+            return json.dumps(result)
+
+    def overbought_stocks(self, country):
+        result = []
+        value_country = ""
+        try:
+            with open('./src/screeners/countries.csv', 'r') as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    if row['name'].strip().lower() == country.lower():
+                        value_country = row['value']
+                        break
+            url = "{}/screener?cntry={}&dividend=div_u&volume=vol_o_50&wkhchg52=52wkhchg_down_0_5&recomm=recomm_1_35&st=desc".format(
+                self.url, value_country)
+            result += self._screener_stocks(url)
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+        finally:
+            return json.dumps(result)
+
+    def upcoming_earnings(self, country):
+        result = []
+        value_country = ""
+        try:
+            with open('./src/screeners/countries.csv', 'r') as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    if row['name'].strip().lower() == country.lower():
+                        value_country = row['value']
+                        break
+            url = "{}/screener?cntry={}&earnings=earnings_tw&price=price_o_10&volume=vol_o_500&t=overview&st=asc".format(
+                self.url, value_country)
+            result += self._screener_stocks(url)
+        except Exception as e:
+            logging.error("An unexpected error occurred: {}".format(e))
+        finally:
+            return json.dumps(result)
