@@ -115,7 +115,6 @@ class Scraper:
             logging.error("An unexpected error occurred: {}".format(e))
             return None
 
-
     def insider_trades(self, symbol):
         result = []
         try:
@@ -163,7 +162,6 @@ class Scraper:
             logging.error("An unexpected error occurred: {}".format(e))
             return None
 
-
     def screeners_scraper(self):
         result = []
         try:
@@ -190,7 +188,6 @@ class Scraper:
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
             return None
-
 
     def all_insider_trades(self):
         result = []
@@ -231,8 +228,6 @@ class Scraper:
             return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            logging.error("An unexpected error occurred: {}".format(e))
             return None
 
     def multiple_screener(self):
@@ -259,7 +254,7 @@ class Scraper:
                 result += self._screener(url_access)
             return json.dumps(result)
         except Exception as e:
-            print(f"Error occurred during scraping: {e}")
+            logging.error("An unexpected error occurred: {}".format(e))
             return None
 
     def _screener(self, url):
@@ -380,10 +375,10 @@ class Scraper:
             url = "{}/screener?cntry={}&dividend=div_0_1&volume=vol_o_50&wklchg52=52wklchg_up_0_5&recomm=recomm_1_3&st=desc".format(
                 self.url, value_country)
             result += self._screener_stocks(url)
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            return json.dumps(result)
+            return None
 
     def overbought_stocks(self, country):
         result = []
@@ -398,10 +393,10 @@ class Scraper:
             url = "{}/screener?cntry={}&dividend=div_u&volume=vol_o_50&wkhchg52=52wkhchg_down_0_5&recomm=recomm_1_35&st=desc".format(
                 self.url, value_country)
             result += self._screener_stocks(url)
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            return json.dumps(result)
+            return None
 
     def upcoming_earnings(self, country):
         result = []
@@ -416,7 +411,7 @@ class Scraper:
             url = "{}/screener?cntry={}&earnings=earnings_tw&price=price_o_10&volume=vol_o_500&t=overview&st=asc".format(
                 self.url, value_country)
             result += self._screener_stocks(url)
+            return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))
-        finally:
-            return json.dumps(result)
+            return None
