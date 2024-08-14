@@ -4,8 +4,8 @@ import uvicorn
 from fastapi import FastAPI
 
 from service import Scraper
-from service import list_country, list_stocks_by_country
-from util import MultipleScreenerItem, success, failed, screenerFilter, checkerInput
+from service import list_country, list_stocks_by_country, multiple_screeners_params
+from util import MultipleScreenerItem, success, failed, screener_filter, checker_input
 
 app = FastAPI()
 service = Scraper()
@@ -64,6 +64,12 @@ def countries():
     return failed() if result is None else success(result)
 
 
+@app.get("/multiple-screener-params")
+def multiple_screener_params(key: str):
+    result = multiple_screeners_params(key)
+    return failed() if result is None else success(result)
+
+
 @app.get("/stocks-by-country/{country}", tags=["Screener"])
 def stocks_by_country(country: str):
     result = list_stocks_by_country(country)
@@ -110,4 +116,5 @@ if __name__ == "__main__":
     # data = MultipleScreenerItem(country="Ok")
     # print(screenerFilter(data))
     # print(checkerInput('cntry', 'United Kingdom'))
+    # print(multiple_screeners_params('asep'))
     uvicorn.run(app, host="0.0.0.0", port=8000)

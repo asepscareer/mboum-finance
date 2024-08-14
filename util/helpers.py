@@ -3,7 +3,19 @@ import csv
 from util import MultipleScreenerItem
 
 
-def checkerInput(name: str, params: str) -> bool:
+def list_params(filename: str) -> list:
+    result = []
+
+    if filename is not None:
+        with open(f'./src/screeners/{filename}', 'r') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                result.append(row['name'])
+        return result
+    return None
+
+
+def checker_input(name: str, params: str) -> bool:
     mapping = {
         "cntry": "countries.csv",
         "sector": "sector.csv",
@@ -24,7 +36,7 @@ def checkerInput(name: str, params: str) -> bool:
     return False
 
 
-def screenerFilter(items: MultipleScreenerItem):
+def screener_filter(items: MultipleScreenerItem):
     def add_value(filename, params: str):
         _value = None
         if params is not None:

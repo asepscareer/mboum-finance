@@ -8,7 +8,7 @@ import json
 
 from lxml.cssselect import CSSSelector
 
-from util import MultipleScreenerItem, screenerFilter, checkerInput
+from util import MultipleScreenerItem, screener_filter, checker_input
 
 
 class Scraper:
@@ -235,18 +235,18 @@ class Scraper:
         if not items.country or not items.sector or not items.volume or not items.changePercent:
             return None
         else:
-            check_country = checkerInput('cntry', items.country)
-            check_sector = checkerInput('sector', items.sector)
-            check_changePercent = checkerInput('percentchange', items.changePercent)
-            check_volume = checkerInput('volume', items.volume)
-            check_market_cap = checkerInput('marketcap', items.marketCap)
-            check_price = checkerInput('price', items.price)
+            check_country = checker_input('cntry', items.country)
+            check_sector = checker_input('sector', items.sector)
+            check_changePercent = checker_input('percentchange', items.changePercent)
+            check_volume = checker_input('volume', items.volume)
+            check_market_cap = checker_input('marketcap', items.marketCap)
+            check_price = checker_input('price', items.price)
             if check_volume and check_sector and check_country and check_changePercent and check_market_cap and check_price:
                 pass
             else:
                 return None
         result = []
-        relative_url = screenerFilter(items)
+        relative_url = screener_filter(items)
         url = "{}/screener/1?{}".format(self.url, relative_url)
         try:
             result += self._screener(url)
