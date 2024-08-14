@@ -8,9 +8,10 @@ import json
 
 from lxml.cssselect import CSSSelector
 
+from util import MultipleScreenerItem, screenerFilter, checkerInput
+
 
 class Scraper:
-
     def __init__(self):
         self.url = "https://mboum.com"
         self.session = requests.Session()
@@ -230,28 +231,40 @@ class Scraper:
             logging.error("An unexpected error occurred: {}".format(e))
             return None
 
-    def multiple_screener(self):
+    def multiple_screener(self, items: MultipleScreenerItem):
+        if not items.country or not items.sector or not items.volume or not items.changePercent:
+            return None
+        else:
+            check_country = checkerInput('cntry', items.country)
+            check_sector = checkerInput('sector', items.sector)
+            check_changePercent = checkerInput('percentchange', items.changePercent)
+            check_volume = checkerInput('volume', items.volume)
+            check_market_cap = checkerInput('marketcap', items.marketCap)
+            check_price = checkerInput('price', items.price)
+            if check_volume and check_sector and check_country and check_changePercent and check_market_cap and check_price:
+                pass
+            else:
+                return None
         result = []
-
-        url = "{}/screener/1?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(
-            self.url)
+        relative_url = screenerFilter(items)
+        url = "{}/screener/1?{}".format(self.url, relative_url)
         try:
-            response = self.session.get(url, headers=self.headers)
-            tree = html.fromstring(response.content)
             result += self._screener(url)
 
+            response = self.session.get(url, headers=self.headers)
+            tree = html.fromstring(response.content)
             page_info_span = tree.cssselect('span:contains("Page")')
             if page_info_span:
                 page_info_text = page_info_span[0].text_content().strip()
                 total_pages = page_info_text.split()[-1]
                 total_pages = int(total_pages)
             else:
-                return 0
+                total_pages = 1
 
-            for page in range(2, total_pages + 1):
-                url_access = "{}/screener/{}?cntry=united-states&percentchange=chg_up&price=vol_b_50_100&volume=vol_u_100&t=overview".format(
-                    self.url, page)
-                result += self._screener(url_access)
+            if total_pages > 1:
+                for page in range(2, total_pages + 1):
+                    url_access = "{}/screener/{}?{}".format(self.url, page, relative_url)
+                    result += self._screener(url_access)
             return json.dumps(result)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))

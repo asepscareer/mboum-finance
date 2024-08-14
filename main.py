@@ -5,7 +5,7 @@ from fastapi import FastAPI
 
 from service import Scraper
 from service import list_country, list_stocks_by_country
-from util import response
+from util import MultipleScreenerItem, success, failed, screenerFilter, checkerInput
 
 app = FastAPI()
 service = Scraper()
@@ -16,95 +16,98 @@ def root():
     return {"message": "Hello Mboum Finance API"}
 
 
-@app.get("/desc/{symbol}")
+@app.get("/desc/{symbol}", tags=["Stocks"])
 def desc(symbol: str):
     result = service.desc(symbol)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/stats/{symbol}")
+@app.get("/stats/{symbol}", tags=["Stocks"])
 def stats(symbol: str):
     result = service.stats(symbol)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/stock-news/{symbol}")
+@app.get("/stock-news/{symbol}", tags=["Stocks"])
 def stock_news(symbol: str):
     result = service.stock_news(symbol)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/analyst-ratings/{symbol}")
+@app.get("/analyst-ratings/{symbol}", tags=["Stocks"])
 def analyst_ratings(symbol: str):
     result = service.analyst_ratings(symbol)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/insider-trades/{symbol}")
+@app.get("/insider-trades/{symbol}", tags=["Stocks"])
 def insider_trades(symbol: str):
     result = service.insider_trades(symbol)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
 @app.get("/latest-news")
 def latest_news():
     result = service.latest_news()
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
 @app.get("/all-insider-trades")
 def insider_trades_all():
     result = service.all_insider_trades()
-    return response.failed() if result is None else response.success(json.loads(result))
-
-
-@app.get("/multiple-screener")
-def multiple_screener():
-    result = service.multiple_screener()
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
 @app.get("/list-country")
 def countries():
     result = list_country()
-    return response.failed() if result is None else response.success(result)
+    return failed() if result is None else success(result)
 
 
-@app.get("/stocks-by-country/{country}")
+@app.get("/stocks-by-country/{country}", tags=["Screener"])
 def stocks_by_country(country: str):
     result = list_stocks_by_country(country)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/oversold/{country}")
+@app.get("/oversold/{country}", tags=["Screener"])
 def oversold(country: str):
     result = service.oversold(country)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/overbought-stocks/{country}")
+@app.get("/overbought-stocks/{country}", tags=["Screener"])
 def overbought_stocks(country: str):
     result = service.overbought_stocks(country)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/upcoming-earnings/{country}")
+@app.get("/upcoming-earnings/{country}", tags=["Screener"])
 def upcoming_earnings(country: str):
     result = service.upcoming_earnings(country)
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
+
+
+@app.post("/multiple-screener")
+def multiple_screener(items: MultipleScreenerItem):
+    result = service.multiple_screener(items)
+    return failed() if result is None else success(json.loads(result))
 
 
 # @app.get("/screeners-scraper")
 def screeners_scraper():
     result = service.screeners_scraper()
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
 # @app.get("/list-stock-country-scraper")
 def list_stocks_country_scraper():
     result = service.list_stocks_country_scraper()
-    return response.failed() if result is None else response.success(json.loads(result))
+    return failed() if result is None else success(json.loads(result))
 
 
 if __name__ == "__main__":
+    # data = MultipleScreenerItem(country="Ok")
+    # print(screenerFilter(data))
+    # print(checkerInput('cntry', 'United Kingdom'))
     uvicorn.run(app, host="0.0.0.0", port=8000)
