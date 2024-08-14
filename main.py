@@ -67,7 +67,7 @@ def multiple_screener():
 @app.get("/list-country")
 def countries():
     result = list_country()
-    return response.failed() if result is None else response.success(json.loads(result))
+    return response.failed() if result is None else response.success(result)
 
 
 @app.get("/stocks-by-country/{country}")
