@@ -10,6 +10,8 @@ COPY requirements.txt .
 # Install dependensi
 RUN pip install --no-cache-dir -r requirements.txt
 
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
 # Copy seluruh kode aplikasi
 COPY . .
 
