@@ -19,23 +19,173 @@ class Scraper:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0'
         }
 
-    def stock_news(self, symbol):
-        result = []
+    def latest_news(self):
         try:
-            response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
-            response.raise_for_status()
+            response = self.session.get(f"{self.url}/news", headers=self.headers)
             tree = html.fromstring(response.content)
-            rows = tree.cssselect('div.col-8 div.card-body table tr')
-            print(len(rows))
+
+            rows = tree.cssselect("div.card div.row")
+            data = []
+
             for row in rows:
-                time = row.cssselect('td:first-child')[0].text
-                title = row.cssselect('td a')[0].text
-                link = row.cssselect('td a')[0].get('href')
-                result.append({"time": time, "headline": title, "link": link})
-            return json.dumps(result)
+                try:
+                    img_elem = row.cssselect("img")[0]
+                    img_url = img_elem.get("src")
+
+                    time_elem = row.cssselect("p.mb-1 small")[0]
+                    time = time_elem.text_content().strip()
+
+                    title_elem = row.cssselect("h5 a")[0]
+                    headline = title_elem.text_content().strip()
+                    link = title_elem.get("href")
+
+                    desc_elem = row.cssselect("p.text-clamp")[0]
+                    description = desc_elem.text_content().strip()
+
+                    ticker_elems = row.cssselect("a.badge")
+                    tickers = [el.text_content().strip() for el in ticker_elems]
+
+                    data.append({
+                        "time": time,
+                        "headline": headline,
+                        "link": link,
+                        "description": description,
+                        "related_tickers": tickers,
+                        "image": img_url
+                    })
+                except IndexError:
+                    continue
+
+            return json.dumps(data, indent=2)
         except Exception as e:
-            logging.error("An unexpected error occurred: {}".format(e))
+            logging.error(f"An unexpected error occurred: {e}")
             return None
+        
+    def overview(self, symbol):
+        def arrange_key(text: str):
+            components = text.replace(' ', '_')
+            return components.lower()
+
+        try:
+            response = self.session.get("{}/quotes/{}?v=overview".format(self.url, symbol), headers=self.headers)
+            tree = html.fromstring(response.content)
+
+            title_elem = tree.cssselect("h1.page-title")
+            company_name = title_elem[0].text_content().strip() if title_elem else ""
+            price_elem = tree.cssselect("span.quote-price")
+            price = price_elem[0].text_content().strip() if price_elem else ""
+            price_change_elem = tree.cssselect("span.quote-price.text-success, span.quote-price.text-danger")
+            price_change = price_change_elem[0].text_content().strip() if price_change_elem else ""
+
+            overview_data = {}
+            table_rows = tree.cssselect("table.quote-table tr")
+            for row in table_rows:
+                label_elem = row.cssselect("td.quote-label")
+                value_elem = row.cssselect("td.quote-val")
+                if label_elem and value_elem:
+                    label = arrange_key(label_elem[0].text_content().strip())
+                    value = value_elem[0].text_content().strip()
+                    overview_data[label] = value
+
+            result = {
+                "company_name": company_name,
+                "price": price,
+                "price_change": price_change,
+                "overview": overview_data
+            }
+
+            return json.dumps(result, indent=2)
+        except Exception as e:
+            logging.error(f"An unexpected error occurred: {e}")
+            return None
+        
+    def related_news(self, symbol):
+        try:
+            response = self.session.get("{}/quotes/{}?v=overview".format(self.url, symbol), headers=self.headers)
+            tree = html.fromstring(response.content)
+
+            news_items = []
+            rows = tree.cssselect("div.card-body.pt-3 div.row")
+
+            for row in rows:
+                try:
+                    image_elem = row.cssselect("img")
+                    image_url = image_elem[0].get("src").strip() if image_elem else ""
+
+                    date_elem = row.cssselect("p.mb-1 small")
+                    date_text = date_elem[0].text_content().strip() if date_elem else ""
+
+                    title_elem = row.cssselect("h5.mb-2 a")
+                    title = title_elem[0].text_content().strip() if title_elem else ""
+                    link = title_elem[0].get("href").strip() if title_elem else ""
+
+                    if title:
+                        news_items.append({
+                            "title": title,
+                            "url": link,
+                            "image": image_url,
+                            "published": date_text
+                        })
+                except Exception as e:
+                    logging.warning(f"Skipping one news item due to error: {e}")
+                    continue
+
+            return json.dumps(news_items, indent=2)
+
+        except Exception as e:
+            logging.error(f"An unexpected error occurred: {e}")
+            return None
+        
+    def financials(self, symbol):
+        response = self.session.get("{}/quotes/{}?v=financial".format(self.url, symbol), headers=self.headers)
+        tree = html.fromstring(response.content)
+        data = {}
+
+        def get_table_data(title_text):
+            section = tree.xpath(f"//h5[contains(text(), '{title_text}')]")
+            if not section:
+                return {}
+            table = section[0].getnext()
+            if table is None or table.tag != 'table': 
+                return {}
+            
+            rows = table.xpath(".//tr")
+            result = {}
+            for row in rows:
+                cols = row.xpath(".//td")
+                if len(cols) == 2:
+                    key = cols[0].text_content().strip()
+                    value = cols[1].text_content().strip()
+                    result[key] = value
+            return result
+
+        data['total_valuation'] = get_table_data("Total Valuation")
+        data['stock_price_statistics'] = get_table_data("Stock Price Statistics")
+        data['ownership_structure'] = get_table_data("Ownership and Share Structure")
+        data['financial_performance'] = get_table_data("Financial Metrics and Performance")
+        data['valuation_metrics'] = get_table_data("Valuation Metrics")
+
+        print("Total Valuation:", data['total_valuation'])
+        print("Stock Price Statistics:", data['stock_price_statistics'])
+        print("Valuation Metrics:", data['valuation_metrics'])
+
+        return json.dumps(data, indent=2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def stats(self, symbol):
         def to_camel_case(text):
@@ -70,28 +220,12 @@ class Scraper:
     def desc(self, symbol):
         try:
             response = self.session.get("{}/quote/{}".format(self.url, symbol), headers=self.headers)
+            print("{}/quote/{}".format(self.url, symbol))
             tree = html.fromstring(response.content)
 
             company_name = tree.cssselect('.card-header')[0].text_content().replace('About ', '')
             description = tree.cssselect('.card-text')[0].text_content().strip()
             data = {'name': company_name, 'description': description}
-            return json.dumps(data)
-        except Exception as e:
-            logging.error("An unexpected error occurred: {}".format(e))
-            return None
-
-    def latest_news(self):
-        try:
-            response = self.session.get("{}/news".format(self.url), headers=self.headers)
-            tree = html.fromstring(response.content)
-
-            data = []
-            for row in tree.cssselect('table tr'):
-                time = row.cssselect('td')[0].text_content()
-                headline_elem = row.cssselect('td a')[0]
-                headline = headline_elem.text_content().strip()
-                authors = headline_elem.getnext().text_content().strip()
-                data.append({'time': time, 'headline': headline, 'authors': authors})
             return json.dumps(data)
         except Exception as e:
             logging.error("An unexpected error occurred: {}".format(e))

@@ -15,6 +15,29 @@ service = Scraper()
 def root():
     return {"message": "Hello Mboum Finance API"}
 
+@app.get("/latest-news", tags=["News"])
+def latest_news():
+    result = service.latest_news()
+    return failed() if result is None else success(json.loads(result))
+
+@app.get("/stock/overview/{symbol}", tags=["Stocks"])
+def overview(symbol: str):
+    result = service.overview(symbol)
+    return failed() if result is None else success(json.loads(result))
+
+@app.get("/stock/related-news/{symbol}", tags=["Stocks"])
+def related_news(symbol: str):
+    result = service.related_news(symbol)
+    return failed() if result is None else success(json.loads(result))
+
+@app.get("/stock/financials/{symbol}", tags=["Stocks"])
+def financials(symbol: str):
+    result = service.financials(symbol)
+    return failed() if result is None else success(json.loads(result))
+
+"""
+BELUM DIPERBAIKI
+"""
 
 @app.get("/desc/{symbol}", tags=["Stocks"])
 def desc(symbol: str):
@@ -28,12 +51,6 @@ def stats(symbol: str):
     return failed() if result is None else success(json.loads(result))
 
 
-@app.get("/stock-news/{symbol}", tags=["Stocks"])
-def stock_news(symbol: str):
-    result = service.stock_news(symbol)
-    return failed() if result is None else success(json.loads(result))
-
-
 @app.get("/analyst-ratings/{symbol}", tags=["Stocks"])
 def analyst_ratings(symbol: str):
     result = service.analyst_ratings(symbol)
@@ -43,12 +60,6 @@ def analyst_ratings(symbol: str):
 @app.get("/insider-trades/{symbol}", tags=["Stocks"])
 def insider_trades(symbol: str):
     result = service.insider_trades(symbol)
-    return failed() if result is None else success(json.loads(result))
-
-
-@app.get("/latest-news")
-def latest_news():
-    result = service.latest_news()
     return failed() if result is None else success(json.loads(result))
 
 
