@@ -3,39 +3,57 @@ import json
 import logging
 
 from util import list_params
+from util.exceptions import DataNotFoundError, ScrapingError
 
+logger = logging.getLogger(__name__)
 
 def list_country():
+    logger.info("Listing all countries from CSV.")
     countries = []
     try:
-        with open('./src/screeners/countries.csv', 'r') as file:
+        with open('./src/screeners/countries.csv', 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                countries.append(row['name'])
+                if 'name' in row:
+                    countries.append(row['name'].strip())
+        if not countries:
+            raise DataNotFoundError("No countries found in countries.csv.")
         return countries
+    except FileNotFoundError as e:
+        logger.error(f"countries.csv not found: {e}")
+        raise ScrapingError("Country data file not found.") from e
     except Exception as e:
-        logging.error("An unexpected error occurred: {}".format(e))
-        return None
+        logger.critical(f"An unexpected error occurred while listing countries: {e}")
+        raise ScrapingError("An unexpected error occurred while listing countries.") from e
 
 
-def list_stocks_by_country(param):
+def list_stocks_by_country(param: str):
+    logger.info(f"Listing stocks for country: {param}")
     stocks = []
     try:
-        country = param.lower().replace(' ', '-')
-        with open(f'./src/stocks/{country}.csv', 'r') as file:
+        country_filename = param.lower().replace(' ', '-')
+        file_path = f'./src/stocks/{country_filename}.csv'
+        with open(file_path, 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                stocks.append({
-                    'ticker': row['ticker'],
-                    'company': row['company']
-                })
+                if 'ticker' in row and 'company' in row:
+                    stocks.append({
+                        'ticker': row['ticker'].strip(),
+                        'company': row['company'].strip()
+                    })
+        if not stocks:
+            raise DataNotFoundError(f"No stocks found for country '{param}' in {file_path}.")
         return json.dumps(stocks)
+    except FileNotFoundError as e:
+        logger.error(f"Stock data file for country '{param}' not found: {e}")
+        raise DataNotFoundError(f"Stock data for country '{param}' not found.") from e
     except Exception as e:
-        logging.error("An unexpected error occurred: {}".format(e))
-        return None
+        logger.critical(f"An unexpected error occurred while listing stocks for country '{param}': {e}")
+        raise ScrapingError(f"An unexpected error occurred while listing stocks for country '{param}'.") from e
 
 
-def multiple_screeners_params(params: str = None):
+def multiple_screeners_params(): # No parameters
+    logger.info("Fetching all multiple screener parameters.")
     mapping = {
         "countries": "countries.csv",
         "industry": "industry.csv",
@@ -74,10 +92,23 @@ def multiple_screeners_params(params: str = None):
         "analyst-recommendations": "analyst_recommendations.csv"
     }
 
-    try:
-        result = list_params(mapping.get(params))
-        return result
-    except Exception as e:
-        logging.error("An unexpected error occurred: {}".format(e))
-        return None
+    all_params_data = {}
+    for param_key, filename in mapping.items():
+        try:
+            options = list_params(filename)
+            if options:
+                all_params_data[param_key] = options
+            else:
+                logger.warning(f"No options found for screener parameter '{param_key}' from file '{filename}'.")
+        except (DataNotFoundError, ScrapingError) as e:
+            logger.error(f"Error fetching options for screener parameter '{param_key}': {e}")
+            # Continue to next parameter even if one fails
+        except Exception as e:
+            logger.critical(f"An unexpected error occurred while fetching options for screener parameter '{param_key}': {e}")
+            # Continue to next parameter
+
+    if not all_params_data:
+        raise DataNotFoundError("No screener parameters could be fetched.")
+    
+    return all_params_data
 

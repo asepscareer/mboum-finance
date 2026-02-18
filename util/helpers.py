@@ -1,21 +1,41 @@
 import csv
+import logging
+from typing import Optional
 
-from util import MultipleScreenerItem
+# Assuming MultipleScreenerItem is in util/request.py now
+from util.request import MultipleScreenerItem
+from util.exceptions import DataNotFoundError, InvalidInputError, ScrapingError
 
+logger = logging.getLogger(__name__)
 
 def list_params(filename: str) -> list:
+    logger.debug(f"Listing parameters from file: {filename}")
     result = []
+    if filename is None:
+        logger.warning("Filename for list_params is None.")
+        return []
 
-    if filename is not None:
-        with open(f'./src/screeners/{filename}', 'r') as file:
+    file_path = f'./src/screeners/{filename}'
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                result.append(row['name'])
+                if 'name' in row:
+                    result.append(row['name'].strip())
+        if not result:
+            logger.warning(f"No parameters found in {filename}.")
+            # It's okay to return an empty list if the file is empty or has no 'name' column
         return result
-    return None
+    except FileNotFoundError as e:
+        logger.error(f"Parameter file not found: {file_path} - {e}")
+        raise DataNotFoundError(f"Parameter file '{filename}' not found.") from e
+    except Exception as e:
+        logger.critical(f"An unexpected error occurred while reading {file_path}: {e}")
+        raise ScrapingError(f"An unexpected error occurred while reading parameter file '{filename}'.") from e
 
 
-def checker_input(name: str, params: str) -> bool:
+def checker_input(name: str, params: Optional[str]) -> bool:
+    logger.debug(f"Checking input for {name} with value: {params}")
     mapping = {
         "cntry": "countries.csv",
         "sector": "sector.csv",
@@ -25,101 +45,107 @@ def checker_input(name: str, params: str) -> bool:
         "price": "price.csv"
     }
 
-    if params is not None:
+    if params is None:
+        return False
+
+    filename = mapping.get(name)
+    if not filename:
+        logger.warning(f"No mapping found for checker_input name: {name}")
+        return False
+
+    file_path = f'./src/screeners/{filename}'
+    try:
         data = {}
-        with open(f'./src/screeners/{mapping.get(name)}', 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                data[row['name'].strip()] = row['value'].strip()
-        if data.get(params) is not None:
-            return True
-    return False
+                if 'name' in row and 'value' in row:
+                    data[row['name'].strip()] = row['value'].strip()
+        
+        is_valid = data.get(params) is not None
+        if not is_valid:
+            logger.warning(f"Invalid input '{params}' for parameter '{name}' (file: {filename}).")
+        return is_valid
+    except FileNotFoundError as e:
+        logger.error(f"Checker input file not found: {file_path} - {e}")
+        # For checker_input, we return False if the file isn't found, as it means the input can't be validated.
+        return False
+    except Exception as e:
+        logger.critical(f"An unexpected error occurred while checking input for {name} from {file_path}: {e}")
+        # For checker_input, we return False for unexpected errors during validation.
+        return False
 
 
-def screener_filter(items: MultipleScreenerItem):
-    def add_value(filename, params: str):
-        _value = None
-        if params is not None:
-            data = {}
-            with open(f'./src/screeners/{filename}', 'r') as file:
-                reader = csv.DictReader(file)
-                for row in reader:
-                    data[row['name'].strip().strip()] = row['value'].strip()
-                _value = data.get(params)
-        return '' if _value is None else _value
+def screener_filter(items: MultipleScreenerItem) -> str:
+    logger.debug(f"Filtering screener items: {items.model_dump_json()}")
 
-    default = "&t=overview&st=asc"
-    country_ = ["cntry", "countries.csv"]
-    industry_ = ["indtry", "industry.csv"]
-    sector = ["sector", "sector.csv"]
-    market_cap_ = ["marketcap", "market_cap.csv"]
-    percent_change_ = ["percentchange", "change_percent.csv"]
-    price_ = ["price", "price.csv"]
-    volume_ = ["volume", "volume.csv"]
-    pe_ = ["p_e", "pe.csv"]
-    fwd_pe_ = ["fwd_pe", "forward_pe.csv"]
-    pb_ = ["pb", "price_book.csv"]
-    peg_ = ["peg", "peg.csv"]
-    earnings_ = ["earnings", "earnings.csv"]
-    profit_m_ = ["profit_m", "profit_margin.csv"]
-    davgchg50_ = ["davgchg50", "50D_avg_change.csv"]
-    roa_ = ["roa", "return_on_assets.csv"]
-    epsy_ = ["epsy", "eps_this_y.csv"]
-    flt_ = ["flt", "float.csv"]
-    roe_ = ["roe", "return_on_equity.csv"]
-    epsny_ = ["epsny", "eps_next_y.csv"]
-    fltsht_ = ["fltsht", "float_short.csv"]
-    curr_r_ = ["curr_r", "current_ratio.csv"]
-    epsp5y_ = ["epsp5y", "eps_past_5y.csv"]
-    outstd_ = ["outstd", "shares_outstanding.csv"]
-    debteq_ = ["debteq", "debt_equity.csv"]
-    epsn5y_ = ["epsn5y", "eps_next_5y.csv"]
-    insido_ = ["insido", "insider_own.csv"]
-    dividend_ = ["dividend", "dividen_yield.csv"]
-    beta_ = ["beta", "beta.csv"]
-    gross_m_ = ["gross_m", "gross_margin.csv"]
-    oper_m_ = ["oper_m", "operating_margin.csv"]
-    ernqtrgrth_ = ["ernqtrgrth", "earn_quarterly_growth.csv"]
-    davgchg200_ = ["davgchg200", "200D_avg_change.csv"]
-    wkhchg52_ = ["wkhchg52", "52W_high_change.csv"]
-    wklchg52_ = ["wklchg52", "52W_low_change.csv"]
-    recomm = ["recomm", "analyst_recommendations.csv"]
+    param_map = {
+        "country": ("cntry", "countries.csv"),
+        "industry": ("indtry", "industry.csv"),
+        "sector": ("sector", "sector.csv"),
+        "marketCap": ("marketcap", "market_cap.csv"),
+        "changePercent": ("percentchange", "change_percent.csv"),
+        "price": ("price", "price.csv"),
+        "volume": ("volume", "volume.csv"),
+        "pe": ("p_e", "pe.csv"),
+        "forwardPE": ("fwd_pe", "forward_pe.csv"),
+        "priceBook": ("pb", "price_book.csv"),
+        "peg": ("peg", "peg.csv"),
+        "earnings": ("earnings", "earnings.csv"),
+        "profitMargin": ("profit_m", "profit_margin.csv"),
+        "avgChg50D": ("davgchg50", "50D_avg_change.csv"),
+        "returnOnAssets": ("roa", "return_on_assets.csv"),
+        "epsThisYear": ("epsy", "eps_this_y.csv"),
+        "float": ("flt", "float.csv"),
+        "returnOnEquity": ("roe", "return_on_equity.csv"),
+        "epsNextYear": ("epsny", "eps_next_y.csv"),
+        "floatShort": ("fltsht", "float_short.csv"),
+        "currentRatio": ("curr_r", "current_ratio.csv"),
+        "epsPast5Year": ("epsp5y", "eps_past_5y.csv"),
+        "sharesOutstanding": ("outstd", "shares_outstanding.csv"),
+        "debtEquity": ("debteq", "debt_equity.csv"),
+        "epsNext5Year": ("epsn5y", "eps_next_5y.csv"),
+        "insiderOwn": ("insido", "insider_own.csv"),
+        "dividendYield": ("dividend", "dividen_yield.csv"),
+        "beta": ("beta", "beta.csv"),
+        "grossMargin": ("gross_m", "gross_margin.csv"),
+        "operatingMargin": ("oper_m", "operating_margin.csv"),
+        "earnQuarterlyGrowth": ("ernqtrgrth", "earn_quarterly_growth.csv"),
+        "avgChg200D": ("davgchg200", "200D_avg_change.csv"),
+        "highChg52W": ("wkhchg52", "52W_high_change.csv"),
+        "lowChg52W": ("wklchg52", "52W_low_change.csv"),
+        "analystRecom": ("recomm", "analyst_recommendations.csv"),
+    }
 
-    country_ = f'{country_[0]}={add_value(country_[1], items.country)}'
-    industry_ = f'&{industry_[0]}={add_value(industry_[1], items.industry)}'
-    sector = f'&{sector[0]}={add_value(sector[1], items.sector)}'
-    market_cap_ = f'&{market_cap_[0]}={add_value(market_cap_[1], items.marketCap)}'
-    percent_change_ = f'&{percent_change_[0]}={add_value(percent_change_[1], items.changePercent)}'
-    price_ = f'&{price_[0]}={add_value(price_[1], items.price)}'
-    volume_ = f'&{volume_[0]}={add_value(volume_[1], items.volume)}'
-    pe_ = f'&{pe_[0]}={add_value(pe_[1], items.pe)}'
-    fwd_pe_ = f'&{fwd_pe_[0]}={add_value(fwd_pe_[1], items.forwardPE)}'
-    pb_ = f'&{pb_[0]}={add_value(pb_[1], items.priceBook)}'
-    peg_ = f'&{peg_[0]}={add_value(peg_[1], items.peg)}'
-    earnings_ = f'&{earnings_[0]}={add_value(earnings_[1], items.earnings)}'
-    profit_m_ = f'&{profit_m_[0]}={add_value(profit_m_[1], items.profitMargin)}'
-    davgchg50_ = f'&{davgchg50_[0]}={add_value(davgchg50_[1], items.avgChg50D)}'
-    roa_ = f'&{roa_[0]}={add_value(roa_[1], items.returnOnAssets)}'
-    epsy_ = f'&{epsy_[0]}={add_value(epsy_[1], items.epsThisYear)}'
-    flt_ = f'&{flt_[0]}={add_value(flt_[1], items.float)}'
-    roe_ = f'&{roe_[0]}={add_value(roe_[1], items.returnOnEquity)}'
-    epsny_ = f'&{epsny_[0]}={add_value(epsny_[1], items.epsNextYear)}'
-    fltsht_ = f'&{fltsht_[0]}={add_value(fltsht_[1], items.floatShort)}'
-    curr_r_ = f'&{curr_r_[0]}={add_value(curr_r_[1], items.currentRatio)}'
-    epsp5y_ = f'&{epsp5y_[0]}={add_value(epsp5y_[1], items.epsPast5Year)}'
-    outstd_ = f'&{outstd_[0]}={add_value(outstd_[1], items.sharesOutstanding)}'
-    debteq_ = f'&{debteq_[0]}={add_value(debteq_[1], items.debtEquity)}'
-    epsn5y_ = f'&{epsn5y_[0]}={add_value(epsn5y_[1], items.epsNext5Year)}'
-    insido_ = f'&{insido_[0]}={add_value(insido_[1], items.insiderOwn)}'
-    dividend_ = f'&{dividend_[0]}={add_value(dividend_[1], items.dividendYield)}'
-    beta_ = f'&{beta_[0]}={add_value(beta_[1], items.beta)}'
-    gross_m_ = f'&{gross_m_[0]}={add_value(gross_m_[1], items.grossMargin)}'
-    oper_m_ = f'&{oper_m_[0]}={add_value(oper_m_[1], items.operatingMargin)}'
-    ernqtrgrth_ = f'&{ernqtrgrth_[0]}={add_value(ernqtrgrth_[1], items.earnQuarterlyGrowth)}'
-    davgchg200_ = f'&{davgchg200_[0]}={add_value(davgchg200_[1], items.avgChg200D)}'
-    wkhchg52_ = f'&{wkhchg52_[0]}={add_value(wkhchg52_[1], items.highChg52W)}'
-    wklchg52_ = f'&{wklchg52_[0]}={add_value(wklchg52_[1], items.lowChg52W)}'
-    recomm = f'&{recomm[0]}={add_value(recomm[1], items.analystRecom)}'
+    query_params = []
+    for item_key, (url_param_name, filename) in param_map.items():
+        item_value = getattr(items, item_key, None)
+        if item_value is not None:
+            file_path = f'./src/screeners/{filename}'
+            try:
+                data_map = {}
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    reader = csv.DictReader(file)
+                    for row in reader:
+                        if 'name' in row and 'value' in row:
+                            data_map[row['name'].strip()] = row['value'].strip()
+                
+                mapped_value = data_map.get(item_value)
+                if mapped_value is not None:
+                    query_params.append(f"{url_param_name}={mapped_value}")
+                else:
+                    logger.warning(f"No mapped value found for '{item_value}' in '{filename}' for parameter '{item_key}'.")
+            except FileNotFoundError:
+                logger.error(f"Screener filter file not found: {file_path}")
+                # Continue processing other parameters even if one file is missing
+            except Exception as e:
+                logger.critical(f"Error processing screener filter for '{item_key}' from '{filename}': {e}")
+                # Continue processing other parameters
 
-    result = country_ + industry_ + sector + market_cap_ + percent_change_ + price_ + volume_ + pe_ + fwd_pe_ + pb_ + peg_ + earnings_ + profit_m_ + davgchg50_ + roa_ + epsy_ + flt_ + roe_ + epsny_ + fltsht_ + curr_r_ + epsp5y_ + outstd_ + debteq_ + epsn5y_ + insido_ + dividend_ + beta_ + gross_m_ + oper_m_ + ernqtrgrth_ + davgchg200_ + wkhchg52_ + wklchg52_ + recomm + default
-    return result
+    final_params = "&".join(query_params)
+    if not final_params:
+        logger.warning("No valid screener filter parameters generated.")
+        # Depending on requirements, might raise InvalidInputError here.
+        # For now, returning an empty string which will result in a base screener URL.
+
+    return final_params + "&t=overview&st=asc"

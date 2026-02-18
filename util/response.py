@@ -1,23 +1,32 @@
+from typing import Any, Optional
+from pydantic import BaseModel
+from starlette.responses import JSONResponse
 import http
 
-from starlette.responses import JSONResponse
+class BaseResponse(BaseModel):
+    status_code: int
+    message: str
 
+class SuccessResponse(BaseResponse):
+    data: Any
 
-def success(data):
-    res = {
-        "data": data,
-        "message": "Success!",
-        "status": http.HTTPStatus.OK,
-    }
+class ErrorResponse(BaseResponse):
+    data: Optional[Any] = None
+    trace_id: Optional[str] = None # Added trace_id
 
-    return JSONResponse(content=res, status_code=http.HTTPStatus.OK)
+def success(data: Any, message: str = "Success!") -> JSONResponse:
+    response_content = SuccessResponse(
+        status_code=http.HTTPStatus.OK,
+        message=message,
+        data=data
+    ).model_dump()
+    return JSONResponse(content=response_content, status_code=http.HTTPStatus.OK)
 
-
-def failed(msg="Make sure the input is correct!"):
-    res = {
-        "data": None,
-        "message": msg,
-        "status": http.HTTPStatus.BAD_REQUEST,
-    }
-
-    return JSONResponse(content=res, status_code=http.HTTPStatus.BAD_REQUEST)
+def failed(message: str = "Make sure the input is correct!", status_code: int = http.HTTPStatus.BAD_REQUEST, trace_id: Optional[str] = None) -> JSONResponse:
+    response_content = ErrorResponse(
+        status_code=status_code,
+        message=message,
+        data=None,
+        trace_id=trace_id # Pass trace_id to the model
+    ).model_dump()
+    return JSONResponse(content=response_content, status_code=status_code)

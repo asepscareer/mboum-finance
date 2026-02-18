@@ -1,3 +1,23 @@
-.env/
-**/__pycache__/
-**/*.pyc
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.bak
+*.swp
+.DS_Store
+.idea/
+.vscode/
+*.egg-info/
+dist/
+build/
+*.egg
+*.tar.gz
+*.whl
+
+# Data files
+src/**/*.csv

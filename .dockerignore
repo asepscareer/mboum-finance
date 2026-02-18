@@ -1,0 +1,22 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Python
+venv/
+*.pyc
+__pycache__/
+
+# Project specific data
+src/output.csv
+src/screeners/*.csv
+src/stocks/*.csv
+
+# IDE/Editor specific
+.idea/
+*.swp
+*.swo
